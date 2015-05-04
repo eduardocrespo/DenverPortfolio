@@ -1,7 +1,0 @@
-b7aea6,127.0.0.1,GET,http://localhost/SonataTest/web/app_dev.php/admin/dashboard,1430704597,
-fcb963,127.0.0.1,GET,http://localhost/SonataTest/web/app_dev.php/admin/admin/admin/video/create,1430704605,
-4c2175,127.0.0.1,POST,http://localhost/SonataTest/web/app_dev.php/admin/admin/admin/video/create?uniqid=s5546d1dc13003,1430704648,
-b69c58,127.0.0.1,GET,http://localhost/SonataTest/web/app_dev.php/admin/admin/admin/video/create,1430704648,
-3850fd,127.0.0.1,GET,http://localhost/SonataTest/web/app_dev.php/admin/admin/admin/video/list,1430704654,
-75fca0,127.0.0.1,GET,http://localhost/SonataTest/web/app_dev.php/admin/dashboard,1430704726,
-8a318b,127.0.0.1,GET,http://localhost/SonataTest/web/app_dev.php/admin/admin/admin/video/list,1430704728,
