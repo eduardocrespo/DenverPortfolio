@@ -1,0 +1,11 @@
+services:
+    sonata.admin.post:
+        class: Admin\AdminBundle\Admin\VideoAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Video" }
+        arguments:
+            - ~
+            - Admin\AdminBundle\Entity\Video
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminAdminBundle]]
