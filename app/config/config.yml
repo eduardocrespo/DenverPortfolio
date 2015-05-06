@@ -5,6 +5,7 @@ imports:
     - { resource: @AdminAdminBundle/Resources/config/admin.yml }
 
 framework:
+    translator: ~
     #esi:             ~
     #translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
@@ -45,6 +46,7 @@ assetic:
         #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
 
 # Doctrine Configuration
+
 doctrine:
     dbal:
         driver:   "%database_driver%"
@@ -80,3 +82,7 @@ sonata_block:
         sonata.user.block.account:
         sonata.admin.block.admin_list:
             contexts:   [admin]
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Admin\AdminBundle\Entity\User

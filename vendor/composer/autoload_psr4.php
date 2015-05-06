@@ -12,5 +12,6 @@ return array(
     'Sonata\\DoctrineORMAdminBundle\\' => array($vendorDir . '/sonata-project/doctrine-orm-admin-bundle'),
     'Sonata\\AdminBundle\\' => array($vendorDir . '/sonata-project/admin-bundle'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
+    'FOS\\UserBundle\\' => array($vendorDir . '/friendsofsymfony/user-bundle'),
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
 );
