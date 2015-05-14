@@ -1,0 +1,27 @@
+{% extends 'FreelanceDenverPortfolioBundle::base.html.twig' %}
+{% block title %}Home{% endblock %}
+{% block body %}
+    {% if videoattributes is not empty %}
+        <div class="videocontainer span12">
+            <div class="gamerow row">
+                <div class="hidden-xs hidden-sm col-md-3 col-md-3 col-lg-3">Title</div>
+
+                <div class="hidden-xs hidden-sm col-md-3 col-lg-3">Url:</div>
+
+                <div class="hidden-xs hidden-sm col-md-6 col-lg-6">Description:</div>
+             </div>
+    {% endif %}
+        {% for key, attribute in videoattributes %}
+                {% if attribute is not empty %} 
+                        <div class="gamerow row span12{{ cycle(['odd', 'even'], loop.index0) }}">
+                            <div class="col-sm-3">{{ attribute.title}}</div>
+
+                            <div class=" col-sm-3">{{ attribute.url}}</div>
+
+                            <div class=" col-sm-6">{{ attribute.description }}</div>                             
+                        </div>
+        </div>  
+                {% endif %}
+        {% endfor %}
+{% endblock %}
+

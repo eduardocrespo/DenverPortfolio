@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>{% spaceless %}
+    <head>   
+        <title>{% block title %}{% endblock %} | Football</title>
+        {% stylesheets 'bundles/traveltravel/css/style.css' %}
+            <link rel="stylesheet" href="{{ asset('bundles/freelancedenverportfolio/css/style.css') }}" />
+        {% endstylesheets %}
+        {% stylesheets 'bundles/traveltravel/css/bootstrap-theme.min.css' %}
+            <link rel="stylesheet" href="{{ asset('bundles/freelancedenverportfolio/css/bootstrap-theme.min.css') }}" />
+        {% endstylesheets %}       
+        {% stylesheets 'bundles/traveltravel/css/bootstrap.css' %}
+            <link rel="stylesheet" href="{{ asset('bundles/freelancedenverportfolio/css/bootstrap.css')}}" />
+        {% endstylesheets %}
+      
+    </head>
+    <body>
+        <div id="content">
+                {% block notifications %}
+                    {% if error is defined and error is not null %}
+                        <div class="message">
+                            {{ error.message|trans }}
+                        </div>
+                    {% endif %}
+
+                    {% if notice is defined and notice is not null %}
+                        <div class="message">
+                            {{ notice }}
+                        </div>
+                    {% endif %}
+
+                    {% if app.session.flashbag.has('notice') is defined and app.session.flashbag.has('notice') is not null  %}
+                            {% for flashMessage in app.session.flashbag.get('notice') %}
+                                <div class="message">
+                                    {{ flashMessage }}
+                                </div>
+                            {% endfor %}
+                    {% endif %}
+                {% endblock %}
+        </div>
+	{% block body %}{% endblock %}
+    </body>
+{% endspaceless %}</html>

@@ -1,0 +1,3 @@
+freelance_denver_portfolio_homepage:
+    path:     /Home
+    defaults: { _controller: FreelanceDenverPortfolioBundle:Main:Home }
