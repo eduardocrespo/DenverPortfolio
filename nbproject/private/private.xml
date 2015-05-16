@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/DenverPortfolio/src/Admin/AdminBundle/Entity/Video.php</file>
-            <file>file:/var/www/DenverPortfolio/vendor/sonata-project/admin-bundle/Resources/views/CRUD/edit.html.twig</file>
-            <file>file:/var/www/DenverPortfolio/vendor/sonata-project/admin-bundle/Resources/views/CRUD/base_edit.html.twig</file>
+            <file>file:/var/www/DenverPortfolio/src/Freelance/DenverPortfolioBundle/FreelanceDenverPortfolioBundle.php</file>
+            <file>file:/var/www/DenverPortfolio/src/Freelance/DenverPortfolioBundle/Controller/MainController.php</file>
+            <file>file:/var/www/DenverPortfolio/src/Freelance/DenverPortfolioBundle/Resources/config/routing.yml</file>
+            <file>file:/var/www/DenverPortfolio/src/Freelance/DenverPortfolioBundle/Resources/translations/SonataUserBundle.en.yml</file>
             <file>file:/var/www/DenverPortfolio/app/config/config.yml</file>
-            <file>file:/var/www/DenverPortfolio/composer.json</file>
-            <file>file:/var/www/DenverPortfolio/vendor/sonata-project/admin-bundle/Resources/views/CRUD/base_show.html.twig</file>
-            <file>file:/var/www/DenverPortfolio/src/Admin/AdminBundle/Entity/VideoRepository.php</file>
+            <file>file:/var/www/DenverPortfolio/vendor/sonata-project/user-bundle/Resources/views/Registration/register_content.html.twig</file>
             <file>file:/var/www/DenverPortfolio/src/Admin/AdminBundle/Controller/DefaultController.php</file>
-            <file>file:/var/www/DenverPortfolio/src/Admin/AdminBundle/Admin/VideoAdmin.php</file>
+            <file>file:/var/www/DenverPortfolio/src/Freelance/DenverPortfolioBundle/Resources/views/Main/index.html.twig</file>
+            <file>file:/var/www/DenverPortfolio/src/Freelance/DenverPortfolioBundle/Resources/views/base.html.twig</file>
         </group>
     </open-files>
 </project-private>

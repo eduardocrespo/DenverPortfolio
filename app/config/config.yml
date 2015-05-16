@@ -25,6 +25,7 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    translator: { fallbacks: [en] }
 
 # Twig Configuration
 twig:
@@ -82,9 +83,13 @@ sonata_user:
 sonata_block:
     default_contexts: [cms]
     blocks:
+        sonata.block.service.text:
+        sonata.block.service.rss:
         sonata.user.block.menu:
         sonata.user.block.account:
         sonata.admin.block.admin_list:
+            contexts:   [admin]
+        sonata.admin.block.search_result:
             contexts:   [admin]
 fos_user:
     db_driver:      orm # can be orm or odm
