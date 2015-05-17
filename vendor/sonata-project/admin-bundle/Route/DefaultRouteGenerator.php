@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -8,11 +9,18 @@
  * file that was distributed with this source code.
  *
  */
+
 namespace Sonata\AdminBundle\Route;
 
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Symfony\Component\Routing\RouterInterface;
 
+/**
+ * Class DefaultRouteGenerator
+ *
+ * @package Sonata\AdminBundle\Route
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class DefaultRouteGenerator implements RouteGeneratorInterface
 {
     private $router;
@@ -142,16 +150,16 @@ class DefaultRouteGenerator implements RouteGeneratorInterface
      */
     private function loadCache(AdminInterface $admin)
     {
-        if (in_array($admin->getCode(), $this->loaded)) {
-            return;
-        }
-
-        $this->caches = array_merge($this->cache->load($admin), $this->caches);
-
-        $this->loaded[] = $admin->getCode();
-
         if ($admin->isChild()) {
             $this->loadCache($admin->getParent());
+        } else {
+            if (in_array($admin->getCode(), $this->loaded)) {
+                return;
+            }
+
+            $this->caches = array_merge($this->cache->load($admin), $this->caches);
+
+            $this->loaded[] = $admin->getCode();
         }
     }
 }

@@ -11,11 +11,14 @@
 
 namespace Sonata\AdminBundle\Admin;
 
-use Sonata\AdminBundle\Admin\AdminInterface;
-
+/**
+ * Interface FieldDescriptionInterface
+ *
+ * @package Sonata\AdminBundle\Admin
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 interface FieldDescriptionInterface
 {
-
     /**
      * set the field name
      *

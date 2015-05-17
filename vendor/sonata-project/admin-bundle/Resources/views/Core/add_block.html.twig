@@ -40,13 +40,24 @@
                 {% if loop.index0 % items_per_column != 0 %}
                     <li role="presentation" class="divider"></li>
                 {% endif %}
-                <li role="presentation" class="dropdown-header">{{ group.label|trans({}, group.label_catalogue) }}</li>
+                <li role="presentation" class="dropdown-header">
+                    {{ group.icon|raw }}
+                    {{ group.label|trans({}, group.label_catalogue) }}
+                </li>
 
                 {% for admin in group.items %}
                     {% if admin.hasRoute('create') and admin.isGranted('CREATE') %}
-                        <li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="{{ admin.generateUrl('create')}}">{{ admin.label|trans({}, admin.translationdomain) }}</a>
-                        </li>
+                        {% if admin.subClasses is empty %}
+                            <li role="presentation">
+                                <a role="menuitem" tabindex="-1" href="{{ admin.generateUrl('create')}}">{{ admin.label|trans({}, admin.translationdomain) }}</a>
+                            </li>
+                        {% else %}
+                            {% for subclass in admin.subclasses|keys %}
+                                <li role="presentation">
+                                    <a role="menuitem" tabindex="-1" href="{{ admin.generateUrl('create', {'subclass': subclass}) }}">{{ subclass|trans({}, admin.translationdomain) }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
                     {% endif %}
                 {% endfor %}
 

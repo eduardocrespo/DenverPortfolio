@@ -1,27 +1,46 @@
 {% extends 'FreelanceDenverPortfolioBundle::base.html.twig' %}
 {% block title %}Home{% endblock %}
 {% block body %}
-    {% if videoattributes is not empty %}
-        <div class="videocontainer span12">
-            <div class="gamerow row">
-                <div class="hidden-xs hidden-sm col-md-3 col-md-3 col-lg-3">{{ "Title"|trans|raw}}:</div>
+    <div class="main">
+        {% if videoattributes is not empty %}
+            <div class="videocontainer span12">
+                <div class="gamerow row">
+                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ "Title"|trans|raw}}:</div>
 
-                <div class="hidden-xs hidden-sm col-md-3 col-lg-3">{{ 'URL'|trans}}:</div>
+                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ 'URL'|trans}}:</div>
 
-                <div class="hidden-xs hidden-sm col-md-6 col-lg-6">{{ 'description2'|trans({}, 'SonataUserBundle')}}:</div>
-             </div>
-    {% endif %}
-        {% for key, attribute in videoattributes %}
+                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ 'description2'|trans({}, 'SonataUserBundle')}}:</div>
+                </div>
+            {% endif %}
+            {% for key, attribute in videoattributes %}
                 {% if attribute is not empty %} 
-                        <div class="gamerow row span12{{ cycle(['odd', 'even'], loop.index0) }}">
-                            <div class="col-sm-3">{{ attribute.title|trans}}</div>
+                    <div class="gamerow{{ cycle(['odd', 'even'], loop.index0) }}">
+                        <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.title|trans}}</div>
 
-                            <div class=" col-sm-3">{{ attribute.url|trans}}</div>
+                        <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.url|trans}}</div>
 
-                            <div class=" col-sm-6">{{ attribute.description|trans }}</div>                             
-                        </div>
-        </div>  
-                {% endif %}
+                        <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.description|trans }}</div>                             
+                    </div>
+                </div>  
+            {% endif %}
         {% endfor %}
+        {% for key, attribute in homepageGallery %}
+
+            {% if attribute is not empty and  homepageGallery|length > 1  %}
+                <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                    {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
+                </div>
+            {% elseif attribute is not empty and  homepageGallery|length == 1  %}
+                <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
+                </div>
+            {% endif %}
+            
+            {% if loop.index is divisible by( 3 ) and  homepageGallery|length > 1 %}
+                <div class="clear"></div>
+            {% endif %}
+
+        {% endfor %} 
+    </div>
 {% endblock %}
 

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -8,10 +9,17 @@
  * file that was distributed with this source code.
  *
  */
+
 namespace Sonata\AdminBundle\Route;
 
 use Symfony\Component\Routing\Route;
 
+/**
+ * Class RouteCollection
+ *
+ * @package Sonata\AdminBundle\Route
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class RouteCollection
 {
     protected $elements = array();
@@ -63,7 +71,7 @@ class RouteCollection
 
         $defaults['_sonata_name'] = $routeName;
 
-        $this->elements[$this->getCode($name)] = function() use ($pattern, $defaults, $requirements, $options) {
+        $this->elements[$this->getCode($name)] = function () use ($pattern, $defaults, $requirements, $options) {
             return new Route($pattern, $defaults, $requirements, $options);
         };
 

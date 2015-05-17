@@ -17,8 +17,11 @@ use Sonata\AdminBundle\Model\ModelManagerInterface;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
- * @author Marek Stipek <mario.dweller@seznam.cz>
- * @author Simon Cosandey <simon.cosandey@simseo.ch>
+ * Class AdminGenerator
+ *
+ * @package Sonata\AdminBundle\Generator
+ * @author  Marek Stipek <mario.dweller@seznam.cz>
+ * @author  Simon Cosandey <simon.cosandey@simseo.ch>
  */
 class AdminGenerator extends Generator
 {
@@ -33,7 +36,7 @@ class AdminGenerator extends Generator
 
     /**
      * @param ModelManagerInterface $modelManager
-     * @param array|string $skeletonDirectories
+     * @param array|string          $skeletonDirectories
      */
     public function __construct(ModelManagerInterface $modelManager, $skeletonDirectories)
     {
@@ -42,9 +45,9 @@ class AdminGenerator extends Generator
     }
 
     /**
-     * @param BundleInterface $bundle
-     * @param string $adminClassBasename
-     * @param string $modelClass
+     * @param  BundleInterface   $bundle
+     * @param  string            $adminClassBasename
+     * @param  string            $modelClass
      * @throws \RuntimeException
      */
     public function generate(BundleInterface $bundle, $adminClassBasename, $modelClass)

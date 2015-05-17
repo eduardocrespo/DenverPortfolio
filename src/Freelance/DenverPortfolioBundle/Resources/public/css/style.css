@@ -7,3 +7,19 @@ float:left;
 .videocontainer{
 text-align: center;
 }
+.automargin{
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+iframe{
+    width:auto;
+    height:auto;
+}
+
+@media (max-width: 510px) {
+    iframe{
+        width: 160px;
+    }
+}
+

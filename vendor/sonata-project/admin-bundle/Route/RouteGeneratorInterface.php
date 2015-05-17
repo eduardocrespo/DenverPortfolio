@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -8,10 +9,17 @@
  * file that was distributed with this source code.
  *
  */
+
 namespace Sonata\AdminBundle\Route;
 
 use Sonata\AdminBundle\Admin\AdminInterface;
 
+/**
+ * Interface RouteGeneratorInterface
+ *
+ * @package Sonata\AdminBundle\Route
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 interface RouteGeneratorInterface
 {
     /**
@@ -30,7 +38,7 @@ interface RouteGeneratorInterface
      * @param array                                    $parameters
      * @param bool                                     $absolute
      *
-     * @return string
+     * @return array
      */
     public function generateMenuUrl(AdminInterface $admin, $name, array $parameters = array(), $absolute = false);
 

@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -15,14 +16,16 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use Sonata\AdminBundle\Validator\ErrorElement;
-use Sonata\AdminBundle\Admin\AdminInterface;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
 /**
+ * Interface AdminExtensionInterface
  *
+ * @package Sonata\AdminBundle\Admin
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
 interface AdminExtensionInterface
 {
@@ -42,9 +45,9 @@ interface AdminExtensionInterface
     public function configureDatagridFilters(DatagridMapper $filter);
 
     /**
-     * @param ShowMapper $filter
+     * @param ShowMapper $show
      */
-    public function configureShowFields(ShowMapper $filter);
+    public function configureShowFields(ShowMapper $show);
 
     /**
      * @param AdminInterface  $admin

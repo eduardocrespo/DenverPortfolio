@@ -15,9 +15,14 @@ use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 
+/**
+ * Interface DatagridBuilderInterface
+ *
+ * @package Sonata\AdminBundle\Builder
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 interface DatagridBuilderInterface extends BuilderInterface
 {
-
     /**
      * @abstract
      *
@@ -28,7 +33,7 @@ interface DatagridBuilderInterface extends BuilderInterface
      *
      * @return void
      */
-    public function addFilter(DatagridInterface $datagrid, $type = null, FieldDescriptionInterface $fieldDescription, AdminInterface $admin);
+    public function addFilter(DatagridInterface $datagrid, $type, FieldDescriptionInterface $fieldDescription, AdminInterface $admin);
 
     /**
      * @param \Sonata\AdminBundle\Admin\AdminInterface $admin

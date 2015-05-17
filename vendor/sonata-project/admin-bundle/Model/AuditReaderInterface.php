@@ -11,6 +11,12 @@
 
 namespace Sonata\AdminBundle\Model;
 
+/**
+ * Interface AuditReaderInterface
+ *
+ * @package Sonata\AdminBundle\Model
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 interface AuditReaderInterface
 {
     /**
@@ -41,9 +47,9 @@ interface AuditReaderInterface
 
     /**
      * @param string $className
-     * @param int $id
-     * @param int $oldRevision
-     * @param int $newRevision
+     * @param int    $id
+     * @param int    $oldRevision
+     * @param int    $newRevision
      */
     public function diff($className, $id, $oldRevision, $newRevision);
 }

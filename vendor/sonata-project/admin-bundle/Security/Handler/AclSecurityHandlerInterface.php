@@ -15,6 +15,12 @@ use Symfony\Component\Security\Acl\Domain\UserSecurityIdentity;
 use Symfony\Component\Security\Acl\Model\AclInterface;
 use Symfony\Component\Security\Acl\Model\ObjectIdentityInterface;
 
+/**
+ * Interface AclSecurityHandlerInterface
+ *
+ * @package Sonata\AdminBundle\Security\Handler
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 interface AclSecurityHandlerInterface extends SecurityHandlerInterface
 {
     /**
@@ -68,7 +74,7 @@ interface AclSecurityHandlerInterface extends SecurityHandlerInterface
      * @abstract
      *
      * @param \Traversable $oids a collection of ObjectIdentityInterface implementations
-     * @param array $sids an array of SecurityIdentityInterface implementations
+     * @param array        $sids an array of SecurityIdentityInterface implementations
      *
      * @throws \Exception
      * @return \SplObjectStorage mapping the passed object identities to ACLs

@@ -85,6 +85,8 @@ btn_add, btn_list, btn_delete and btn_catalogue:
   with these parameters. Setting any of them to ``false`` will hide the
   corresponding button. You can also specify a custom translation catalogue
   for these labels, which defaults to ``SonataAdminBundle``.
+  
+Note: An admin class for the linked model class needs to be defined to render this form type.  
 
 sonata_type_model_hidden
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -206,8 +208,8 @@ to_string_callback
     $formMapper
         ->add('category', 'sonata_type_model_autocomplete', array(
             'property'=>'title',
-            'to_string_callback' => function($enitity, $property) {
-                return $enitity->getTitle();
+            'to_string_callback' => function($entity, $property) {
+                return $entity->getTitle();
             },
         )
     );
@@ -232,8 +234,21 @@ route
   The route ``name`` with ``parameters`` that is used as target url for ajax
   requests.
 
+width
+  defaults to "". Controls the width style attribute of the Select2 container div.
+
+dropdown_auto_width
+  defaults to false. Set to true to enable the `dropdownAutoWidth` Select2 option,
+  which allows the drop downs to be wider than the parent input, sized according to their content.
+
+container_css_class
+  defaults to "". Css class that will be added to select2's container tag.
+
 dropdown_css_class
-  defaults to "sonata-autocomplete-dropdown". CSS class of dropdown list.
+  defaults to "". CSS class of dropdown list.
+
+dropdown_item_css_class
+  defaults to "". CSS class of dropdown item.
 
 req_param_name_search
   defaults to "q". Ajax request parameter name which contains the searched text.
@@ -244,6 +259,69 @@ req_param_name_page_number
 req_param_name_items_per_page
   defaults to "_per_page".  Ajax request parameter name which contains the limit of
   items per page.
+
+template
+  defaults to ``SonataAdminBundle:Form/Type:sonata_type_model_autocomplete.html.twig``.
+  Use this option if you want to override the default template of this form type.
+
+.. code-block:: php
+
+    class ArticleAdmin extends Admin
+    {
+        protected function configureFormFields(FormMapper $formMapper)
+        {
+            $formMapper
+                ->add('category', 'sonata_type_model_autocomplete', array(
+                    'property'=>'title',
+                    'template'=>'AcmeAdminBundle:Form/Type:sonata_type_model_autocomplete.html.twig'
+                ))
+            ;
+        }
+    }
+
+.. code-block:: jinja
+
+    {# in Acme/AdminBundle/Resources/views/Form/Type/sonata_type_model_autocomplete.html.twig #}
+
+    {% extends 'SonataAdminBundle:Form/Type:sonata_type_model_autocomplete.html.twig' %}
+
+    {# change the default selection format #}
+    {% block sonata_type_model_autocomplete_selection_format %}'<b>'+item.label+'</b>'{% endblock %}
+
+sonata_choice_field_mask
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Setting a field type of ``sonata_choice_field_mask`` will use an instance of
+``ChoiceFieldMaskType`` to render choice field.
+
+According the choice made only associated fields are displayed. The others fields are hidden.
+
+.. code-block:: php
+
+    class AcmeMenuAdmin extends Admin
+    {
+        protected function configureFormFields(FormMapper $formMapper)
+        {
+            $formMapper
+                ->add('linkType', 'sonata_type_choice_field_mask', array(
+                    'choices' =>  array('uri' => 'uri', 'route' => 'route'),
+                    'map' => array(
+                        'route' => array('route', 'parameters'),
+                        'uri' => array('uri'),
+                    ),
+                    'empty_value' => 'Choose an option',
+                    'required' => false
+                ))
+                ->add('route', 'text')
+                ->add('uri', 'text')
+                ->add('parameters')
+            ;
+        }
+    }
+
+map
+  Associative array. Describes the fields that are displayed for each choice.
+
 
 sonata_type_admin
 ^^^^^^^^^^^^^^^^^
@@ -272,17 +350,21 @@ that looks like this:
 
         # Acme/DemoBundle/Resources/config/admin.yml
 
-        sonata.admin.image:
-            class: Acme\DemoBundle\Admin\ImageAdmin
-            tags:
-                - { name: sonata.admin, manager_type: orm, label: "Image" }
-            arguments:
-                - ~
-                - Acme\DemoBundle\Entity\Image
-                - 'SonataAdminBundle:CRUD'
-            calls:
-                - [ setTranslationDomain, [Acme\DemoBundle]]
+        services:
+            sonata.admin.image:
+                class: Acme\DemoBundle\Admin\ImageAdmin
+                tags:
+                    - { name: sonata.admin, manager_type: orm, label: "Image" }
+                arguments:
+                    - ~
+                    - Acme\DemoBundle\Entity\Image
+                    - 'SonataAdminBundle:CRUD'
+                calls:
+                    - [ setTranslationDomain, [Acme\DemoBundle]]
 
+.. note::
+
+    Refer to `Getting started documentation`_ to see how to define your admin.yml file.
 
 To embed ``ImageAdmin`` within ``PageAdmin`` we just need to change the reference
 for the ``image1`` field to ``sonata_type_admin`` in our ``PageAdmin`` class:
@@ -435,6 +517,20 @@ General
         <?php
         $form->add('status', null, array('label' => false);
 
+ChoiceType
+^^^^^^^^^^
+
+- ``sortable``: This option can be added for multiple choice widget to activate select2 sortable.
+
+.. code-block:: php
+
+        <?php
+        $form->add('multiChoices', 'choice', array(
+            'multiple' => true,
+            'sortable' => true
+        );
+
 .. _`Symfony field types`: http://symfony.com/doc/current/book/forms.html#built-in-field-types
 .. _`Symfony choice Field Type docs`: http://symfony.com/doc/current/reference/forms/types/choice.html
 .. _`Symfony PropertyPath`: http://api.symfony.com/2.0/Symfony/Component/Form/Util/PropertyPath.html
+.. _`Getting started documentation`: https://sonata-project.org/bundles/admin/master/doc/reference/getting_started.html#importing-it-in-the-main-config-yml

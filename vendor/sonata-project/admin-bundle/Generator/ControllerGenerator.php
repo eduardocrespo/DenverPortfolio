@@ -16,8 +16,11 @@ use Sensio\Bundle\GeneratorBundle\Generator\Generator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 /**
- * @author Marek Stipek <mario.dweller@seznam.cz>
- * @author Simon Cosandey <simon.cosandey@simseo.ch>
+ * Class ControllerGenerator
+ *
+ * @package Sonata\AdminBundle\Generator
+ * @author  Marek Stipek <mario.dweller@seznam.cz>
+ * @author  Simon Cosandey <simon.cosandey@simseo.ch>
  */
 class ControllerGenerator extends Generator
 {
@@ -36,8 +39,8 @@ class ControllerGenerator extends Generator
     }
 
     /**
-     * @param BundleInterface $bundle
-     * @param string $controllerClassBasename
+     * @param  BundleInterface   $bundle
+     * @param  string            $controllerClassBasename
      * @throws \RuntimeException
      */
     public function generate(BundleInterface $bundle, $controllerClassBasename)

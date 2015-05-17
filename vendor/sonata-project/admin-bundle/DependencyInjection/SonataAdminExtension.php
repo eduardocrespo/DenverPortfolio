@@ -13,17 +13,17 @@ namespace Sonata\AdminBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Definition;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Config\Definition\Processor;
 
 /**
- * SonataAdminBundleExtension
+ * Class SonataAdminExtension
  *
- * @author      Thomas Rabaix <thomas.rabaix@sonata-project.org>
- * @author      Michael Williams <michael.williams@funsational.com>
+ * @package Sonata\AdminBundle\DependencyInjection
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * @author  Michael Williams <michael.williams@funsational.com>
  */
 class SonataAdminExtension extends Extension
 {
@@ -131,6 +131,25 @@ BOOM
 
         $loader->load('security.xml');
 
+        // Set the SecurityContext for Symfony <2.6
+        // TODO: Go back to simple xml configuration when bumping requirements to SF 2.6+
+        if (interface_exists('Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface')) {
+            $tokenStorageReference = new Reference('security.token_storage');
+            $authorizationCheckerReference = new Reference('security.authorization_checker');
+        } else {
+            $tokenStorageReference = new Reference('security.context');
+            $authorizationCheckerReference = new Reference('security.context');
+        }
+        $container
+            ->getDefinition('sonata.admin.security.handler.role')
+            ->replaceArgument(0, $authorizationCheckerReference)
+        ;
+        $container
+            ->getDefinition('sonata.admin.security.handler.acl')
+            ->replaceArgument(0, $tokenStorageReference)
+            ->replaceArgument(1, $authorizationCheckerReference)
+        ;
+
         $container->setParameter('sonata.admin.extension.map', $config['extensions']);
 
         /**
@@ -147,7 +166,8 @@ BOOM
         );
 
         $container->getDefinition('sonata.admin.form.extension.field')
-            ->replaceArgument(0, $classes);
+            ->replaceArgument(0, $classes)
+            ->replaceArgument(1, $config['options']);
 
         // remove non used service
         if (!isset($bundles['JMSTranslationBundle'])) {
@@ -248,9 +268,6 @@ BOOM
             "Sonata\\AdminBundle\\Util\\FormViewIterator",
             "Sonata\\AdminBundle\\Util\\ObjectAclManipulator",
             "Sonata\\AdminBundle\\Util\\ObjectAclManipulatorInterface",
-            "Sonata\\AdminBundle\\Validator\\Constraints\\InlineConstraint",
-            "Sonata\\AdminBundle\\Validator\\ErrorElement",
-            "Sonata\\AdminBundle\\Validator\\InlineValidator",
         ));
     }
 
@@ -259,6 +276,6 @@ BOOM
      */
     public function getNamespace()
     {
-        return 'http://sonata-project.org/schema/dic/admin';
+        return 'https://sonata-project.org/schema/dic/admin';
     }
 }

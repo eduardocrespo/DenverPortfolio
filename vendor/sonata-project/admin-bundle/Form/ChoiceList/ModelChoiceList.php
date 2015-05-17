@@ -19,6 +19,12 @@ use Symfony\Component\Form\Exception\RuntimeException;
 use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
 use Sonata\AdminBundle\Model\ModelManagerInterface;
 
+/**
+ * Class ModelChoiceList
+ *
+ * @package Sonata\AdminBundle\Form\ChoiceList
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class ModelChoiceList extends SimpleChoiceList
 {
     /**
@@ -194,9 +200,9 @@ class ModelChoiceList extends SimpleChoiceList
      * If they have single identifiers, they are either fetched from the
      * internal entity cache (if filled) or loaded from the database.
      *
-     * @param string $key The choice key (for entities with composite
-     *                      identifiers) or entity ID (for entities with single
-     *                      identifiers)
+     * @param  string $key The choice key (for entities with composite
+     *                     identifiers) or entity ID (for entities with single
+     *                     identifiers)
      * @return object The matching entity
      */
     public function getEntity($key)
@@ -241,7 +247,7 @@ class ModelChoiceList extends SimpleChoiceList
      *
      * @param  object                   $entity The entity for which to get the identifier
      * @throws InvalidArgumentException If the entity does not exist in Doctrine's
-     *                                  identity map
+     *                                         identity map
      * @return array
      */
     public function getIdentifierValues($entity)

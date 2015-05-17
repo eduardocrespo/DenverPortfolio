@@ -39,6 +39,16 @@ class AppKernel extends Kernel
             new Sonata\UserBundle\SonataUserBundle(),
             new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
             new Freelance\DenverPortfolioBundle\FreelanceDenverPortfolioBundle(),
+            
+//enable sonata Media Bundle
+            new Sonata\ClassificationBundle\SonataClassificationBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+            new Application\Sonata\ClassificationBundle\ApplicationSonataClassificationBundle(),
+//apt-get install php5-gd
+//http://community.linuxmint.com/software/view/php5-gd
+            new Sonata\MediaBundle\SonataMediaBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new Sonata\IntlBundle\SonataIntlBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

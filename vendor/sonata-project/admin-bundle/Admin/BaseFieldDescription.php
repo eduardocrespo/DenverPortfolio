@@ -11,7 +11,6 @@
 
 namespace Sonata\AdminBundle\Admin;
 
-use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Exception\NoValueException;
 use Symfony\Component\DependencyInjection\Container;
 
@@ -106,17 +105,17 @@ abstract class BaseFieldDescription implements FieldDescriptionInterface
     protected $options = array();
 
     /**
-     * @var Admin|null the parent Admin instance
+     * @var AdminInterface|null the parent Admin instance
      */
     protected $parent = null;
 
     /**
-     * @var Admin the related admin instance
+     * @var AdminInterface the related admin instance
      */
     protected $admin;
 
     /**
-     * @var Admin the associated admin class if the object is associated to another entity
+     * @var AdminInterface the associated admin class if the object is associated to another entity
      */
     protected $associationAdmin;
 
@@ -293,9 +292,6 @@ abstract class BaseFieldDescription implements FieldDescriptionInterface
     }
 
     /**
-     * set the association admin instance (only used if the field is linked to an Admin)
-     *
-     * @param \Sonata\AdminBundle\Admin\AdminInterface $associationAdmin the associated admin
      * {@inheritdoc}
      */
     public function setAssociationAdmin(AdminInterface $associationAdmin)
@@ -325,6 +321,10 @@ abstract class BaseFieldDescription implements FieldDescriptionInterface
      */
     public function getFieldValue($object, $fieldName)
     {
+        if ($this->isVirtual()) {
+           return null;
+        }
+
         $camelizedFieldName = self::camelize($fieldName);
 
         $getters = array();
@@ -345,6 +345,10 @@ abstract class BaseFieldDescription implements FieldDescriptionInterface
             if (method_exists($object, $getter)) {
                 return call_user_func_array(array($object, $getter), $parameters);
             }
+        }
+
+        if (method_exists($object, '__call')) {
+            return call_user_func_array(array($object, '__call'), array($fieldName, $parameters));
         }
 
         if (isset($object->{$fieldName})) {
@@ -421,9 +425,7 @@ abstract class BaseFieldDescription implements FieldDescriptionInterface
      */
     public static function camelize($property)
     {
-        return preg_replace_callback('/(^|[_. ])+(.)/', function ($match) {
-            return ('.' === $match[1] ? '_' : '') . strtoupper($match[2]);
-        }, $property);
+        return Container::camelize($property);
     }
 
     /**
@@ -481,6 +483,16 @@ abstract class BaseFieldDescription implements FieldDescriptionInterface
      */
     public function getTranslationDomain()
     {
-        return $this->getOption('translation_domain') ? : $this->getAdmin()->getTranslationDomain();
+        return $this->getOption('translation_domain') ?: $this->getAdmin()->getTranslationDomain();
+    }
+
+    /**
+     * Return true if field is virtual.
+     *
+     * @return boolean
+     */
+    public function isVirtual()
+    {
+        return false !== $this->getOption('virtual_field', false);
     }
 }

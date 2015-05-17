@@ -15,11 +15,15 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Output\Output;
 
+/**
+ * Class ExplainAdminCommand
+ *
+ * @package Sonata\AdminBundle\Command
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class ExplainAdminCommand extends ContainerAwareCommand
 {
-
     /**
      * {@inheritDoc}
      */
@@ -59,7 +63,7 @@ class ExplainAdminCommand extends ContainerAwareCommand
         $output->writeln('');
         $output->writeln('<info>Routes</info>');
         foreach ($admin->getRoutes()->getElements() as $route) {
-            $output->writeln(sprintf('  - % -25s %s', $route->getDefault('_sonata_name'), $route->getPattern()));
+            $output->writeln(sprintf('  - % -25s %s', $route->getDefault('_sonata_name'), $route->getPath()));
         }
 
         $output->writeln('');
@@ -86,8 +90,13 @@ class ExplainAdminCommand extends ContainerAwareCommand
             $output->writeln(sprintf('  - % -25s  % -15s % -15s', $name, $fieldDescription->getType(), $fieldDescription->getTemplate()));
         }
 
-        $validatorFactory = $this->getContainer()->get('validator')->getMetadataFactory();
-        $metadata = $validatorFactory->getMetadataFor($admin->getClass());
+        $validator = $this->getContainer()->get('validator');
+        // TODO: Remove conditional method when bumping requirements to SF 2.5+
+        if (method_exists($validator, 'getMetadataFor')) {
+            $metadata = $validator->getMetadataFor($admin->getClass());
+        } else {
+            $metadata = $validator->getMetadataFactory()->getMetadataFor($admin->getClass());
+        }
 
         $output->writeln('');
         $output->writeln('<comment>Validation Framework</comment> - http://symfony.com/doc/2.0/book/validation.html');

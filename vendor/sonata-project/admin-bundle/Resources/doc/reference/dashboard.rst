@@ -33,8 +33,8 @@ The Dashboard is actually built using ``Blocks`` from ``SonataBlockBundle``. You
 can learn more about this bundle and how to build your own Blocks on the
 `SonataBlock documentation page`_.
 
-The ``Admin`` list
-------------------
+The ``Admin`` list block
+------------------------
 
 The ``Admin`` list is a ``Block`` that fetches information from the ``Admin`` service's
 ``Pool`` and prints it in the nicely formated list you have on your default Dashboard.
@@ -117,7 +117,7 @@ service belongs to the ``Content`` group.
                     - Acme\DemoBundle\Entity\Post
                     - ~
 
-In this example, the labels are translated by ``SonataAdminBundle``, using the given
+In this example, the labels are translated by ``AcmeDemoBundle``, using the given
 ``label_catalogue``. So, you can use the above examples to support multiple languages
 in your project.
 
@@ -219,9 +219,10 @@ a text block and RSS feed block on the right. The configuration for this scenari
                     -
                         position: right
                         type: sonata.block.service.rss
+                        roles: [POST_READER]
                         settings:
                             title: Sonata Project's Feeds
-                            url: http://sonata-project.org/blog/archive.rss
+                            url: https://sonata-project.org/blog/archive.rss
 
 
 .. note::
@@ -229,6 +230,9 @@ a text block and RSS feed block on the right. The configuration for this scenari
     Blocks may accept/require additional settings to be passed in order to
     work properly. Refer to the associated documentation/implementation to
     get more information on each block's options and requirements.
+
+    You can also configure the ``roles`` section to configure users that can
+    view the block.
 
 Display two ``Admin`` list blocks with different dashboard groups
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -273,7 +277,33 @@ suit this scenario.
 In this example, you would have two ``admin_list`` blocks on your dashboard, each
 of them containing just the respectively configured groups.
 
-.. _`SonataBlock documentation page`:  http://sonata-project.org/bundles/block/master/doc/index.html
+.. _`SonataBlock documentation page`:  https://sonata-project.org/bundles/block/master/doc/index.html
+
+
+Statistic Block
+~~~~~~~~~~~~~~~
+
+A statistic block can be used to display a simple counter with a color, an font awesome icon and a text. A
+counter is related to the filters from one admin
+
+.. configuration-block::
+
+    .. code-block:: yaml
+
+        sonata_admin:
+            dashboard:
+                blocks:
+                    -
+                        class:    col-lg-3 col-xs-6          # twitter bootstrap responsive code
+                        position: top                        # zone in the dashboard
+                        type:     sonata.admin.block.stats   # block id
+                        settings:
+                            code:  sonata.page.admin.page    # admin code - service id
+                            icon:  fa-magic                  # font awesome icon
+                            text:  Edited Pages
+                            color: bg-yellow                 # colors: bg-green, bg-red and bg-aqua
+                            filters:                         # filter values
+                                edited: { value: 1 }
 
 Dashboard Layout
 ~~~~~~~~~~~~~~~~
@@ -288,13 +318,14 @@ Supported positions right now are the following:
 
 The layout is as follows:
 
-    TOPTOPTOPTOPTOPTOPTOPTOPTOPTOPTOPTOP
-    
-    LEFTLEFTLEF CENTERCENTE RIGHTRIGHTRI
-    LEFTLEFTLEF CENTERCENTE RIGHTRIGHTRI
-    LEFTLEFTLEF CENTERCENTE RIGHTRIGHTRI
-    
-    BOTTOMBOTTOMBOTTOMBOTTOMBOTTOMBOTTOM
+TOP     TOP     TOP
+
+ LEFT CENTER RIGHT
+ LEFT CENTER RIGHT
+ LEFT CENTER RIGHT
+
+BOTTOM BOTTOM BOTTOM
+
 
 On ``top`` and ``bottom`` positions, you can also specify an optionnal ``class`` option to set the width of the block.
 

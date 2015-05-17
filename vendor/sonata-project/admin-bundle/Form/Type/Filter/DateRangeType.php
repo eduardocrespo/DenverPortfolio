@@ -13,10 +13,17 @@ namespace Sonata\AdminBundle\Form\Type\Filter;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Class DateRangeType
+ *
+ * @package Sonata\AdminBundle\Form\Type\Filter
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 class DateRangeType extends AbstractType
 {
     const TYPE_BETWEEN = 1;
@@ -46,24 +53,34 @@ class DateRangeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $choices = array(
-            self::TYPE_BETWEEN    => $this->translator->trans('label_date_type_between', array(), 'SonataAdminBundle'),
-            self::TYPE_NOT_BETWEEN    => $this->translator->trans('label_date_type_not_between', array(), 'SonataAdminBundle'),
+            self::TYPE_BETWEEN     => $this->translator->trans('label_date_type_between', array(), 'SonataAdminBundle'),
+            self::TYPE_NOT_BETWEEN => $this->translator->trans('label_date_type_not_between', array(), 'SonataAdminBundle'),
         );
 
         $builder
             ->add('type', 'choice', array('choices' => $choices, 'required' => false))
-            ->add('value', $options['field_type'], array('field_options' => $options['field_options']))
+            ->add('value', $options['field_type'], $options['field_options'])
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @todo Remove it when bumping requirements to SF 2.7+
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $this->configureOptions($resolver);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'field_type'       => 'sonata_type_date_range',
-            'field_options'    => array('format' => 'yyyy-MM-dd')
+            'field_type'    => 'sonata_type_date_range',
+            'field_options' => array('format' => 'yyyy-MM-dd')
         ));
     }
 }

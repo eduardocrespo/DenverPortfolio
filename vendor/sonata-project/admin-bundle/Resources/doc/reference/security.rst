@@ -468,8 +468,8 @@ Vocabulary used for Access Control Lists:
   There can be many voters that may have different permission maps. However,
   prevent that multiple voters vote on the same class with overlapping bitmasks.
 
-See the cookbook article "`Advanced ACL concepts 
-<http://symfony.com/doc/current/cookbook/security/acl_advanced.html#pre-authorization-decisions.>`_" 
+See the cookbook article "`Advanced ACL concepts
+<http://symfony.com/doc/current/cookbook/security/acl_advanced.html#pre-authorization-decisions.>`_"
 for the meaning of the different permissions.
 
 
@@ -687,10 +687,32 @@ return an iterable collection of users.
         $userManager = $container->get('fos_user.user_manager');
 
         // Display only kevin and anne
-        $kevin = $userManager->findUserByUsername('kevin');
-        $anne = $userManager->findUserByUsername('anne');
+        $users[] = $userManager->findUserByUsername('kevin');
+        $users[] = $userManager->findUserByUsername('anne');
 
-        return array($kevin, $anne);
+        return new \ArrayIterator($users);
+    }
+
+Role list customization
+~~~~~~~~~~~~~~~~~~~~~~~
+
+By default, the ACL editor allows to set permissions for all roles.
+
+To customize displayed role override
+`Sonata\AdminBundle\Controller\CRUDController::getAclRoles()`. This method must
+return an iterable collection of roles.
+
+.. code-block:: php
+
+    /**
+     * {@InheritDoc}
+     */
+    protected function getAclRoles()
+    {
+        // Display only ROLE_BAPTISTE and ROLE_HELENE
+        $roles = array('ROLE_BAPTISTE', 'ROLE_HELENE');
+
+        return new \ArrayIterator($roles);
     }
 
 Custom user manager
@@ -712,6 +734,6 @@ service to use when retrieving your users.
             security:
                 acl_user_manager: my_user_manager # The name of your service
 
-.. _`SonataUserBundle's documentation area`: http://sonata-project.org/bundles/user/master/doc/reference/installation.html
+.. _`SonataUserBundle's documentation area`: https://sonata-project.org/bundles/user/master/doc/reference/installation.html
 .. _`changing the access decision strategy`: http://symfony.com/doc/2.2/cookbook/security/voters.html#changing-the-access-decision-strategy
 .. _`create your own voter`: http://symfony.com/doc/2.2/cookbook/security/voters.html

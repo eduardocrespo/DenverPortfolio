@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -8,8 +9,15 @@
  * file that was distributed with this source code.
  *
  */
+
 namespace Sonata\AdminBundle\Datagrid;
 
+/**
+ * Interface PagerInterface
+ *
+ * @package Sonata\AdminBundle\Datagrid
+ * @author  Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ */
 interface PagerInterface
 {
     /**
@@ -53,4 +61,18 @@ interface PagerInterface
      * @return array
      */
     public function getResults();
+
+    /**
+     * Sets the maximum number of page numbers.
+     *
+     * @param int $maxPageLinks
+     */
+    public function setMaxPageLinks($maxPageLinks);
+
+    /**
+     * Returns the maximum number of page numbers.
+     *
+     * @return int
+     */
+    public function getMaxPageLinks();
 }
