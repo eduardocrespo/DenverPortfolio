@@ -17,14 +17,22 @@ class MainController extends Controller {
     public function HomeAction() {
 
         $videoQuery = $this
-                ->getDoctrine()
-                ->getRepository('AdminAdminBundle:Video')
-                ->allVideos()
+            ->getDoctrine()
+            ->getRepository('AdminAdminBundle:Video')
+            ->allVideos()
         ;
         $homepageCategoryQuery = $this
-                ->getDoctrine()
-                ->getRepository('ApplicationSonataMediaBundle:Media')
-                ->findByCategory(1)
+            ->getDoctrine()
+            ->getRepository('ApplicationSonataMediaBundle:Media')
+            ->createQueryBuilder('t')
+                ->select('t.id')
+                ->where('t.enabled = :enabled')
+                ->andwhere('t.category = :category')
+                ->setParameter('enabled', 1)
+                ->setParameter('category', 1)
+                ->orderBy('t.id', 'ASC')
+                    ->getQuery()
+                    ->getResult()
         ;
 
         return $this->render(

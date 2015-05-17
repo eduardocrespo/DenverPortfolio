@@ -26,17 +26,22 @@
         {% endfor %}
         {% for key, attribute in homepageGallery %}
 
-            {% if attribute is not empty and  homepageGallery|length > 1  %}
+            {% if attribute is not empty and  homepageGallery|length >= 3  %}
                 <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
                     {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
                 </div>
             {% elseif attribute is not empty and  homepageGallery|length == 1  %}
                 <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
+            {% elseif attribute is not empty and  homepageGallery|length == 2  %}
+                <div class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
                 </div>
             {% endif %}
             
-            {% if loop.index is divisible by( 3 ) and  homepageGallery|length > 1 %}
+            {% if loop.index is divisible by( 2 ) and  homepageGallery|length % 2 == 0 %}
+                <div class="clear"></div>
+            {% elseif loop.index is divisible by( 3 ) and  homepageGallery|length % 2 == 1 %}
                 <div class="clear"></div>
             {% endif %}
 
