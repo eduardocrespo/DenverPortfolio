@@ -26,26 +26,48 @@
         {% endfor %}
         {% for key, attribute in homepageGallery %}
 
-            {% if attribute is not empty and  homepageGallery|length >= 3  %}
-                <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                    {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
-                </div>
-            {% elseif attribute is not empty and  homepageGallery|length == 1  %}
+            {% if attribute is not empty and  homepageGallery|length == 1  %}
                 <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
-            {% elseif attribute is not empty and  homepageGallery|length == 2  %}
-                <div class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                    {% media attribute.id, 'big' with {'class': 'img-responsive'} %}
+                    {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
                 </div>
-            {% endif %}
-            
-            {% if loop.index is divisible by( 2 ) and  homepageGallery|length % 2 == 0 %}
-                <div class="clear"></div>
-            {% elseif loop.index is divisible by( 3 ) and  homepageGallery|length % 2 == 1 %}
-                <div class="clear"></div>
+                {% elseif attribute is not empty and  homepageGallery|length == 2  %}
+                    <div class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
+                    </div>
+                {% elseif attribute is not empty and  homepageGallery|length >= 3 and homepageGallery|length % 2 == 0 %}
+                    <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
+                    </div>
+                {% elseif attribute is not empty and  homepageGallery|length >= 3 and homepageGallery|length % 2 == 1 %}
+                    <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
+                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
+                    </div>
             {% endif %}
 
         {% endfor %} 
     </div>
-{% endblock %}
+    <div class="clear"></div>
+    <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+                         {% media 22,'big' with {'class': 'img-responsive'} %}
+                    </div>
+                    <div class="item">
+                         {% media 23,'big' with {'class': 'img-responsive'} %}
+                    </div>
+                </div>
+                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                        <span class="icon-prev"></span>
+                    </a>
+                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                        <span class="icon-next"></span>
+                    </a>
+                    
+    </div>
+                    <hr class="transition-timer-carousel-progress-bar" />
+    {% endblock %}
 

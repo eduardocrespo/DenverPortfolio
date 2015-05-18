@@ -111,8 +111,8 @@ sonata_media:
                 - sonata.media.provider.vimeo
 
             formats:
-                small: { width: 300 , quality: 70}
-                big:   {width: 300px, quality: 1000}
+                small: { width: 300 , quality: 100}
+                big:   {width: 1280, quality: 100}
 
     cdn:
         server:
@@ -134,3 +134,4 @@ fos_user:
 
     service:
         user_manager: sonata.user.orm.user_manager
+        
