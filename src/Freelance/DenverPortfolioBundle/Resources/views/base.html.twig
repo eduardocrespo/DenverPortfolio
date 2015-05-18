@@ -2,13 +2,10 @@
 <html>{% spaceless %}
     <head>   
         <title>{% block title %}{% endblock %} | Portfolio</title>
-        {% stylesheets 'bundles/freelancedenverportfolio/css/style.css' %}
-            <link rel="stylesheet" href="{{ asset('bundles/freelancedenverportfolio/css/style.css') }}" />
-        {% endstylesheets %}     
-        {% stylesheets 'bundles/freelancedenverportfolio/css/bootstrap.css' %}
-            <link rel="stylesheet" href="{{ asset('bundles/freelancedenverportfolio/css/bootstrap.css')}}" />
+        {% stylesheets '@FreelanceDenverPortfolioBundle/Resources/public/css/*' filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+     
           
       
     </head>
@@ -37,8 +34,16 @@
                 {% endblock %}
         </div>
 	{% block body %}{% endblock %}
-        <script src="{{ asset('bundles/freelancedenverportfolio/js/jquery.min.js')}}"></script>
-        <script src="{{ asset('bundles/freelancedenverportfolio/js/bootstrap.min.js')}}"></script>
-        <script src="{{ asset('bundles/freelancedenverportfolio/js/slideshow.js')}}"></script>
-    </body>
+        {% block javascripts %} 
+            {% javascripts '@FreelanceDenverPortfolioBundle/Resources/public/js/jquery.min.js'%}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            {% javascripts '@FreelanceDenverPortfolioBundle/Resources/public/js/bootstrap.min.js'%}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            {% javascripts '@FreelanceDenverPortfolioBundle/Resources/public/js/slideshow.js'%}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+</body>
 {% endspaceless %}</html>
