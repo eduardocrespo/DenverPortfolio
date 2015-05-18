@@ -41,7 +41,7 @@ object{
     }
 }
 .transition-timer-carousel-progress-bar {
-    height: 5px;
+    height: 10px;
     background-color: #5cb85c;
     width: 0%;
     margin: 0px 0px 0px 0px;
