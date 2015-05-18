@@ -1,0 +1,21 @@
+{% if videoattributes is not empty %}
+    <div class="videocontainer span12">
+        <div class="gamerow row">
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ "Title"|trans|raw}}:</div>
+
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ 'URL'|trans}}:</div>
+
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ 'description2'|trans({}, 'SonataUserBundle')}}:</div>
+        </div>
+{% endif %}
+{% for key, attribute in videoattributes %}
+    {% if attribute is not empty %} 
+        <div class="gamerow{{ cycle(['odd', 'even'], loop.index0) }}">
+            <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.title|trans}}</div>
+
+            <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.url|trans}}</div>
+            <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.description|trans }}</div>                             
+        </div>
+    </div>  
+    {% endif %}
+{% endfor %}

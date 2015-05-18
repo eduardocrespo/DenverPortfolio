@@ -21,7 +21,8 @@ class MainController extends Controller {
             ->getRepository('AdminAdminBundle:Video')
             ->allVideos()
         ;
-        $homepageCategoryQuery = $this
+        // 3col slideshow on homepage
+        $homepageVideoCategoryQuery = $this
             ->getDoctrine()
             ->getRepository('ApplicationSonataMediaBundle:Media')
             ->createQueryBuilder('t')
@@ -29,16 +30,33 @@ class MainController extends Controller {
                 ->where('t.enabled = :enabled')
                 ->andwhere('t.category = :category')
                 ->setParameter('enabled', 1)
-                ->setParameter('category', 1)
+                ->setParameter('category', 5)
                 ->orderBy('t.id', 'ASC')
                     ->getQuery()
                     ->getResult()
         ;
+        
+        //image slideshow on homepage
+        $homepageImageSlideshowCategoryQuery = $this
+            ->getDoctrine()
+            ->getRepository('ApplicationSonataMediaBundle:Media')
+            ->createQueryBuilder('t')
+                ->select('t.id')
+                ->where('t.enabled = :enabled')
+                ->andwhere('t.category = :category')
+                ->setParameter('enabled', 1)
+                ->setParameter('category', 4)
+                ->orderBy('t.id', 'ASC')
+                    ->getQuery()
+                    ->getResult()
+        ;
+        
 
         return $this->render(
                         'FreelanceDenverPortfolioBundle:Main:index.html.twig', array(
                     'videoattributes' => $videoQuery,
-                    'homepageGallery' =>  $homepageCategoryQuery,
+                    'homepageVideoGallery' =>  $homepageVideoCategoryQuery,
+                    'homepageImageSlideshowGallery' =>  $homepageImageSlideshowCategoryQuery,
                         )
         );
     }

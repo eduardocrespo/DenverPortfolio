@@ -1,73 +1,9 @@
 {% extends 'FreelanceDenverPortfolioBundle::base.html.twig' %}
 {% block title %}Home{% endblock %}
 {% block body %}
-    <div class="main">
-        {% if videoattributes is not empty %}
-            <div class="videocontainer span12">
-                <div class="gamerow row">
-                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ "Title"|trans|raw}}:</div>
-
-                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ 'URL'|trans}}:</div>
-
-                    <div class="hidden-xs hidden-sm col-md-4 col-lg-4">{{ 'description2'|trans({}, 'SonataUserBundle')}}:</div>
-                </div>
-            {% endif %}
-            {% for key, attribute in videoattributes %}
-                {% if attribute is not empty %} 
-                    <div class="gamerow{{ cycle(['odd', 'even'], loop.index0) }}">
-                        <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.title|trans}}</div>
-
-                        <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.url|trans}}</div>
-
-                        <div class="col-sm-4 col-md-4 col-lg-4">{{ attribute.description|trans }}</div>                             
-                    </div>
-                </div>  
-            {% endif %}
-        {% endfor %}
-        {% for key, attribute in homepageGallery %}
-
-            {% if attribute is not empty and  homepageGallery|length == 1  %}
-                <div class="text-center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
-                </div>
-                {% elseif attribute is not empty and  homepageGallery|length == 2  %}
-                    <div class="text-center col-xs-12 col-sm-6 col-md-6 col-lg-6">
-                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
-                    </div>
-                {% elseif attribute is not empty and  homepageGallery|length >= 3 and homepageGallery|length % 2 == 0 %}
-                    <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
-                    </div>
-                {% elseif attribute is not empty and  homepageGallery|length >= 3 and homepageGallery|length % 2 == 1 %}
-                    <div class="text-center col-xs-12 col-sm-6 col-md-4 col-lg-4">
-                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
-                    </div>
-            {% endif %}
-
-        {% endfor %} 
-    </div>
+    {% include 'FreelanceDenverPortfolioBundle:Content:HomepageVideoContent.html.twig' %}
+    {% include 'FreelanceDenverPortfolioBundle:Slideshow:HomepageVideoGallery.html.twig' %}
     <div class="clear"></div>
-    <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active" ></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="item active">
-                         {% media 22,'big' with {'class': 'img-responsive'} %}
-                    </div>
-                    <div class="item">
-                         {% media 23,'big' with {'class': 'img-responsive'} %}
-                    </div>
-                </div>
-                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">
-                        <span class="icon-prev"></span>
-                    </a>
-                    <a class="carousel-control right" href="#myCarousel" data-slide="next">
-                        <span class="icon-next"></span>
-                    </a>
-                    
-    </div>
-                    <hr class="transition-timer-carousel-progress-bar" />
-    {% endblock %}
+    {% include 'FreelanceDenverPortfolioBundle:Slideshow:HomepageImageGallery.html.twig' %}
+{% endblock %}
 
