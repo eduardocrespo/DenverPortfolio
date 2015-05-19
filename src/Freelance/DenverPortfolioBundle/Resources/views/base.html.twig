@@ -4,10 +4,7 @@
         <title>{% block title %}{% endblock %} | Portfolio</title>
         {% stylesheets '@FreelanceDenverPortfolioBundle/Resources/public/css/*' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %}
-     
-          
-      
+        {% endstylesheets %} 
     </head>
     <body>
         <div id="content">
@@ -35,13 +32,11 @@
         </div>
 	{% block body %}{% endblock %}
         {% block javascripts %} 
-            {% javascripts '@FreelanceDenverPortfolioBundle/Resources/public/js/jquery.min.js'%}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-            {% javascripts '@FreelanceDenverPortfolioBundle/Resources/public/js/bootstrap.min.js'%}
-                <script type="text/javascript" src="{{ asset_url }}"></script>
-            {% endjavascripts %}
-            {% javascripts '@FreelanceDenverPortfolioBundle/Resources/public/js/slideshow.js'%}
+            {% javascripts 
+                '@FreelanceDenverPortfolioBundle/Resources/public/js/jquery.min.js'
+                '@FreelanceDenverPortfolioBundle/Resources/public/js/bootstrap.min.js'
+                '@FreelanceDenverPortfolioBundle/Resources/public/js/slideshow.js'
+            %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}

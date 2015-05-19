@@ -1,0 +1,65 @@
+.player .video-wrapper, .player .video-wrapper .flideo, .player .video-wrapper object, .player .video-wrapper video {
+width: 100%;
+height: 86.2%;
+}
+
+.player .video-wrapper {
+position: absolute;
+background: #fff;
+}
+
+.clear{
+clear:both;
+}
+.floatleft{
+float:left;
+}
+.videocontainer{
+text-align: center;
+}
+.automargin{
+    
+    margin-left: auto;
+    margin-right: auto;
+}
+iframe{
+    height:260px;
+}
+object{
+        width: auto;
+        height:260px !important;
+    }
+
+hr.transition-timer-carousel-progress-bar {
+    height: 10px;
+    background-color: #5cb85c;
+    width: 0%;
+    margin: 0px 0px 0px 0px;
+    border: none;
+    z-index: 11;
+    position: relative;
+    display:none;
+}
+div#myCarousel{
+    margin-left: 8%;
+    margin-right: 8%;
+}
+#myCarousel > div > div.item.active > img, #myCarousel > div > div.item > img{
+{
+}
+@media (max-width: 510px) {
+    iframe{
+        width: 160px;
+        height: 160px;
+    }
+    object{
+        width: 160px;
+        height: 160px;
+    }
+}
+@media (max-width: 1279px) {
+    div#myCarousel{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
