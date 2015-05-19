@@ -1,9 +1,9 @@
 {% extends 'FreelanceDenverPortfolioBundle::base.html.twig' %}
 {% block title %}Home{% endblock %}
 {% block body %}
+    {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageImageGallery.html.twig' %}{% endembed %}
+    <div class="clear"></div>
     {% embed 'FreelanceDenverPortfolioBundle:Content:HomepageVideoContent.html.twig' %}{% endembed %}
     {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageVideoGallery.html.twig' %}{% endembed %}
-    <div class="clear"></div>
-    {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageImageGallery.html.twig' %}{% endembed %}
 {% endblock %}
 

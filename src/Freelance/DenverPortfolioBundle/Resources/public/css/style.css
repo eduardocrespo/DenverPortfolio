@@ -1,7 +1,7 @@
 @media (max-width: 345px) {
     iframe{
-        width: 80px;
-        height: 80px;
+        width: 160px;
+        height: 160px;
     }
     object{
         width: auto;
@@ -26,12 +26,12 @@
 }
 @media (min-width: 768px) {
     #myCarousel > div > div > img{
-        max-height:720px;
-        max-width:1280px;
+        max-height:1080px;
+        max-width:760px;
     }
     div#myCarousel{
-        max-height:720px;
-        max-width:1280px;
+        max-height:1080px;
+        max-width:760px;
         margin-left:auto;
         margin-right:auto;
     }
