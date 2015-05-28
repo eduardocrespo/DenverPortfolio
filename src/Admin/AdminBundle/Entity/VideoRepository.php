@@ -20,4 +20,26 @@ class VideoRepository extends EntityRepository
         ;
         return $token;
     }
+    
+    public function mediaById($id)
+    {
+        $query = $this
+            ->getEntityManager()
+            ->getRepository('ApplicationSonataMediaBundle:Media')
+                ->createQueryBuilder('t')
+                    ->select('t')
+                        ->where('t.enabled = :enabled')
+                        ->andwhere('t.category = :category')
+                        ->setParameter('enabled', 1)
+                        ->setParameter('category', $id)
+                        ->orderBy('t.id', 'ASC')
+                        
+        ;
+        $token = $query
+            ->getQuery()
+            ->getResult()
+        ;
+        
+        return $token;
+    }
 }

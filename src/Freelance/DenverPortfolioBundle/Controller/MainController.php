@@ -16,48 +16,32 @@ class MainController extends Controller {
 
     public function HomeAction() {
 
-        $videoQuery = $this
+        $videoContentQuery = $this
             ->getDoctrine()
             ->getRepository('AdminAdminBundle:Video')
-            ->allVideos()
+                ->allVideos()
         ;
         // 3col slideshow on homepage
         $homepageVideoCategoryQuery = $this
             ->getDoctrine()
-            ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->createQueryBuilder('t')
-                ->select('t')
-                ->where('t.enabled = :enabled')
-                ->andwhere('t.category = :category')
-                ->setParameter('enabled', 1)
-                ->setParameter('category', 5)
-                ->orderBy('t.id', 'ASC')
-                    ->getQuery()
-                    ->getResult()
+            ->getRepository('AdminAdminBundle:Video')
+                ->mediaById(5)
         ;
         
         //image slideshow on homepage
         $homepageImageSlideshowCategoryQuery = $this
             ->getDoctrine()
-            ->getRepository('ApplicationSonataMediaBundle:Media')
-            ->createQueryBuilder('t')
-                ->select('t')
-                ->where('t.enabled = :enabled')
-                ->andwhere('t.category = :category')
-                ->setParameter('enabled', 1)
-                ->setParameter('category', 4)
-                ->orderBy('t.id', 'ASC')
-                    ->getQuery()
-                    ->getResult()
+            ->getRepository('AdminAdminBundle:Video')
+                ->mediaById(4)
         ;
         
 
         return $this->render(
-                        'FreelanceDenverPortfolioBundle:Main:index.html.twig', array(
-                    'videoattributes' => $videoQuery,
-                    'homepageVideoGallery' =>  $homepageVideoCategoryQuery,
-                    'homepageImageSlideshowGallery' =>  $homepageImageSlideshowCategoryQuery,
-                        )
+            'FreelanceDenverPortfolioBundle:Main:index.html.twig', array(
+                'homepageVideoContent' => $videoContentQuery,
+                'homepageVideoGallery' =>  $homepageVideoCategoryQuery,
+                'homepageImageSlideshowGallery' =>  $homepageImageSlideshowCategoryQuery
+            )
         );
     }
 

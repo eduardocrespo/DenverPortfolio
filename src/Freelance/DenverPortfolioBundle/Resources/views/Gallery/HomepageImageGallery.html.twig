@@ -26,7 +26,7 @@
         {% endif %}
 
     </div>
-    {% if homepageImageSlideshowGallery|length > 1 %}
+    {% block carouselProgressBar %}
         <hr class="transition-timer-carousel-progress-bar" />
-    {% endif %}
+    {% endblock %}
 {% endblock %}
