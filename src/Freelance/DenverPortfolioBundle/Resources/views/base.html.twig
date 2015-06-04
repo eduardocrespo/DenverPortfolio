@@ -7,38 +7,20 @@
         {% endstylesheets %} 
     </head>
     <body>
-        <div id="content">
-                {% block notifications %}
-                    {% if error is defined and error is not null %}
-                        <div class="message">
-                            {{ error.message|trans }}
-                        </div>
-                    {% endif %}
-
-                    {% if notice is defined and notice is not null %}
-                        <div class="message">
-                            {{ notice }}
-                        </div>
-                    {% endif %}
-
-                    {% if app.session.flashbag.has('notice') is defined and app.session.flashbag.has('notice') is not null  %}
-                            {% for flashMessage in app.session.flashbag.get('notice') %}
-                                <div class="message">
-                                    {{ flashMessage }}
-                                </div>
-                            {% endfor %}
-                    {% endif %}
+            {% block header %}{% endblock %}
+            <div class="content">   
+                {% block content %}
                 {% endblock %}
-        </div>
-	{% block body %}{% endblock %}
+            </div>
         {% block javascripts %} 
             {% javascripts 
                 '@FreelanceDenverPortfolioBundle/Resources/public/js/jquery.min.js'
                 '@FreelanceDenverPortfolioBundle/Resources/public/js/bootstrap.min.js'
                 '@FreelanceDenverPortfolioBundle/Resources/public/js/slideshow.js'
+                '@FreelanceDenverPortfolioBundle/Resources/public/js/fontsmoothie.min.js'
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
         {% endblock %}
-</body>
+    </body>
 {% endspaceless %}</html>

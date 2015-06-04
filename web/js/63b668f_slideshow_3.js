@@ -1,0 +1,1 @@
+$(document).ready(function(){function e(){r.css({width:n+"%"}),n+=.5,n>100&&(n=0,t.carousel("next"))}var n=0,r=$(".transition-timer-carousel-progress-bar"),t=$("#myCarousel");t.carousel({interval:!1,pause:!0}).on("slid.bs.carousel",function(){n=0});var a=setInterval(e,30);t.hover(function(){clearInterval(a)},function(){a=setInterval(e,30)})});
