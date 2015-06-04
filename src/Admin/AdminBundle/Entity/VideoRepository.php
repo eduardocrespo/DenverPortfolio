@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 
 class VideoRepository extends EntityRepository
 {
-    public function allVideos()
+    public function allBiographies()
     {
         $query = $this
             ->getEntityManager()

@@ -1,0 +1,9 @@
+{% block homepageReelGallery %}
+            {% for key, attribute in homepageDemoGallery %}
+                {% if attribute is not empty and  homepageDemoGallery|length == 1  %}
+                    <div class="text-left col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        {% media attribute.id, 'small' with {'class': 'img-responsive'} %}
+                    </div>
+                {% endif %}
+            {% endfor %} 
+        {% endblock %}

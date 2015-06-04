@@ -16,16 +16,37 @@ class MainController extends Controller {
 
     public function HomeAction() {
 
-        $videoContentQuery = $this
+        $homepageAboutMeCenterBiographyContent = $this
             ->getDoctrine()
             ->getRepository('AdminAdminBundle:Video')
-                ->allVideos()
+                ->allBiographies()
         ;
         // 3col slideshow on homepage
         $homepageVideoCategoryQuery = $this
             ->getDoctrine()
             ->getRepository('AdminAdminBundle:Video')
                 ->mediaById(5)
+        ;
+        
+        // Demo reel on homepage
+        $homepageDemoCategoryQuery = $this
+            ->getDoctrine()
+            ->getRepository('AdminAdminBundle:Video')
+                ->mediaById(6)
+        ;
+        
+        // about me left slideshow on homepage
+        $homepageAboutMeLeftSlideshowGallery = $this
+            ->getDoctrine()
+            ->getRepository('AdminAdminBundle:Video')
+                ->mediaById(7)
+        ;
+        
+        // about me right slideshow on homepage
+        $homepageAboutMeRightSlideshowGallery = $this
+            ->getDoctrine()
+            ->getRepository('AdminAdminBundle:Video')
+                ->mediaById(8)
         ;
         
         //image slideshow on homepage
@@ -35,11 +56,16 @@ class MainController extends Controller {
                 ->mediaById(4)
         ;
         
+        
+        
 
         return $this->render(
             'FreelanceDenverPortfolioBundle:Main:index.html.twig', array(
-                'homepageVideoContent' => $videoContentQuery,
+                'homepageAboutMeCenterBiographyContent' => $homepageAboutMeCenterBiographyContent,
                 'homepageVideoGallery' =>  $homepageVideoCategoryQuery,
+                'homepageDemoGallery' =>  $homepageDemoCategoryQuery,
+                'homepageAboutMeLeftSlideshowGallery' =>  $homepageAboutMeLeftSlideshowGallery,
+                'homepageAboutMeRightSlideshowGallery' =>  $homepageAboutMeRightSlideshowGallery,
                 'homepageImageSlideshowGallery' =>  $homepageImageSlideshowCategoryQuery
             )
         );

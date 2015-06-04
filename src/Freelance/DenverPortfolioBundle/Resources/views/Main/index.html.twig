@@ -2,15 +2,16 @@
 {% block title %}Home{% endblock %}
 {% block body %}
     {% block header %}
-        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageHeaderBlock.html.twig' %}{% endembed %}]
+        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageHeaderBlock.html.twig' %}{% endembed %}
     {% endblock %}
     {% block content %}
+        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageDemoReelBlock.html.twig' %}{% endembed %}
+        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageAboutMeBlock.html.twig' %}{% endembed %}
         {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageImageGallery.html.twig' %}
            {% block carouselProgressBar %}
            {% endblock %}
        {% endembed %}
        <div class="clear"></div>
-       {% embed 'FreelanceDenverPortfolioBundle:Content:HomepageVideoContent.html.twig' %}{% endembed %}
        {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageVideoGallery.html.twig' %}{% endembed %}
     {% endblock %}
 {% endblock %}

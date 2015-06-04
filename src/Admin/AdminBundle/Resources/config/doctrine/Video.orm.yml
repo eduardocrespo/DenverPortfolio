@@ -9,10 +9,6 @@ Admin\AdminBundle\Entity\Video:
             generator:
                 strategy: AUTO
     fields:
-        title:
-            type: text
-        url:
-            type: text
-        description:
+        biography:
             type: text
     lifecycleCallbacks: {  }

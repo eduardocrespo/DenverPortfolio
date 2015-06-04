@@ -17,17 +17,8 @@ class Video
     /**
      * @var string
      */
-    private $description;
+    private $biography;
 
-    /**
-     * @var text
-     */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $url;
 
 
     /**
@@ -39,73 +30,12 @@ class Video
     {
         return $this->id;
     }
+    public function getBiography() {
+        return $this->biography;
+    }
 
-    /**
-     * Set description
-     *
-     * @param string $description
-     * @return Product
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
+    public function setBiography($biography) {
+        $this->biography = $biography;
         return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string 
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param integer $quantity
-     * @return Product
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    /**
-     * Get quantity
-     *
-     * @return integer 
-     */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set num
-     *
-     * @param string $num
-     * @return Product
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get num
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 }

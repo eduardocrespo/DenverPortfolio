@@ -1,0 +1,22 @@
+    <div id="myAboutLeftCarousel" class="carousel slide text-center col-sm-3" data-interval="false" data-ride="carousel">
+        <div class="carousel-inner">
+            {% for key, attribute in homepageAboutMeLeftSlideshowGallery %}
+                {% if attribute is not empty %}
+                    <div class="item {% if loop.index0 == 0 %}active{% endif %}">
+                        {% media attribute.id, 'small' with {'class': 'img-responsive text-center'} %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% if homepageAboutMeLeftSlideshowGallery|length > 1 %}
+            <a class="carousel-control left" href="#myAboutLeftCarousel" data-slide="prev">
+                <span class="icon-prev"></span>
+            </a>
+        {% endif %}
+
+    </div>
+        
+    
+
+
+

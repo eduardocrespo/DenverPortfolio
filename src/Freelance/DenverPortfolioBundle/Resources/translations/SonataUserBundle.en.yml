@@ -1,6 +1,8 @@
 #blocks
 user_block_logout: log me out
 Bad credentials.: You have entered a incorrect Username or Password
+Video: Biography
+Video List: Biography List
 
 #Main Menu
 sonata_user: User

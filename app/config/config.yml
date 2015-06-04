@@ -113,7 +113,7 @@ sonata_media:
             formats:
                 thumbnail: {width: 20, height: 20, quality: 100}
                 background: {width: 1024, height: 468, quality: 100}
-                4k: {width: 1024, height: 468, quality: 100}
+                4k: {width: 4096, height: 2160, quality: 100}
                 small: { width: 300 , quality: 100}
                 big:   {width: 1280, quality: 100}
 

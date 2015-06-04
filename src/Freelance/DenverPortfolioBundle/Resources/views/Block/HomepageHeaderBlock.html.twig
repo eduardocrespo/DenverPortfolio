@@ -2,7 +2,7 @@
     <div class="logocontainer">
         {% block logodenver %}
             <div class="logodenver col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <span class="redtext">{{'d'|capitalize }}</span>{{ 'enver '|upper }}{{ 'James Harwar'|upper }}<span class="redtext">D</span>            
+                <span class="redtext">{{'d'|capitalize }}</span>{{ 'enver '|upper }}{{ 'James Harwar'|upper }}<span class="redtext">{{'d'|capitalize }}</span>            
             </div>
             {% endblock %}
     <div class="clear"></div>
@@ -15,7 +15,7 @@
         
     <div class="navhref text-right">
         {% block navhref %}
-            <a  href="#about" class="col-sm-4 col-sm-2 col-md-2 col-lg-2 text-center"><span class="whitetext">{{ 'about'|upper }}</span></a>
+            <a  href="#aboutme" class="col-sm-4 col-sm-2 col-md-2 col-lg-2 text-center"><span class="whitetext">{{ 'about '|upper }}<span class="redtext">{{ 'me'|upper }}</span></span></a>
             <a href="#gallery" class="col-sm-4 col-sm-2 col-md-2 col-lg-2 text-center"><span class="whitetext">{{ 'gallery'|upper }}</span></a>
             <a href="#contact" class="col-sm-4 col-sm-2 col-md-2 col-lg-2 text-center"><span class="whitetext">{{ 'contact'|upper }}</span></a>
         {% endblock %}       
@@ -27,7 +27,7 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="whitetext">{{ 'Main Menu'|upper }}</span> <b class="caret whitetext"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a  href="#about"><span class="blacktext">{{ 'about'|upper }}</span></a></li>
+                            <li><a  href="#aboutme"><span class="blacktext">{{ 'about '|upper }}</span><span class="redtext">{{ 'me'|upper }}</span></a></li>
                             <li><a  href="#gallery"><span class="blacktext">{{ 'gallery'|upper }}</span></a></li>
                             <li><a  href="#contact"><span class="blacktext">{{ 'contact'|upper }}</span></a></li>
                         </ul>

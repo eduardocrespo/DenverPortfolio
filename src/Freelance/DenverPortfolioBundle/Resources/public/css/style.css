@@ -37,13 +37,16 @@ hr.transition-timer-carousel-progress-bar {
     width: 0%;
     margin: 0px 0px 0px 0px;
     border: none;
-    z-index: 11;
+    z-index: 3;
     position: relative;
 }
 
 body {
     color:#fff;
     font-family: FuturaLT-Book;
+}
+main{
+    overflow-x: hidden;
 }
 a {
   color: #CC0000;
@@ -86,13 +89,13 @@ div.header {
 }
 .logocinematographer {
     font-size: 15px;
-    letter-spacing: 16.8px;
+    letter-spacing: 17px;
 }
 span.redtext {
     color:#CC0000;
 }
 div.content{
-     margin: 35px auto;
+     margin: 55px auto;
 }
 .whitetext{
     color:#fff;
@@ -112,16 +115,78 @@ div.navhref{
  div.dropdown{
         display:none;
     }
+    #myCarousel > ol{
+        z-index: 2;
+    }
     
+body, html, main {
+/* important */
+height: 100%;
+}
+ 
+.cd-fixed-bg {
+min-height: 100%;
+background-size: cover;
+background-attachment: fixed;
+background-repeat: no-repeat;
+background-position: center center;
+}
+ 
+.cd-fixed-bg.cd-bg-1 {
+  background-image: url("/uploads/media/default/0001/01/thumb_63_default_4k.jpeg");
+  width: 2048px;
+  height: 468px;
+}
+.cd-fixed-bg.cd-bg-2 {
+  background-image: url("../img/cd-background-2.jpg");
+}
+.cd-fixed-bg.cd-bg-3 {
+  background-image: url("../img/cd-background-3.jpg");
+}
+.cd-fixed-bg.cd-bg-4 {
+  background-image: url("../img/cd-background-4.jpg");
+}
+ 
+.cd-scrolling-bg {
+min-height: 100%;
+}
+
+div.cd-container{
+    background-color: #0f0f0f;
+    height:55px;
+    
+}
+div.cd-container > p{
+    position: relative;
+    top: 18px;
+    font-size: 15.5px;
+}
+
+img.no-resize {
+  min-height: 300px;
+  min-width: 300px;
+}
+
+div.content > main > div.cd-fixed-bg > div > object > embed {
+width: 45%;
+height: 360px;
+margin-top: 357px;
+}
+div#myAboutMainCarousel{
+ margin-top: 100px;   
+}
+div#myAboutLeftCarousel,div#myAboutRightCarousel{
+    margin-top: 100px;
+}
+#myAboutMainCarousel > ol{
+    top: -18px;
+}  
 @media (max-width: 345px) {
     iframe{
         width: 90px;
         height: 90px;
     }
-    embed{
-        width: 112px;
-        height: 56px;
-    }
+
     .lastname{
         display:none;
     }
@@ -140,7 +205,7 @@ div.navhref{
         height: 20px;
     }
     embed{
-        width: 250px;
+        width: 248px;
         height: 100px;
     }
     div.logodenver,div.dropdown{
@@ -155,7 +220,7 @@ div.navhref{
     }
       
 }
-@media (max-width: 766px) {
+@media (max-width: 767px) {
     div.navhref{
         display:none;
     }
@@ -164,6 +229,9 @@ div.navhref{
        color:#fff;
        font-family: FuturaLT-Book;
    }
+   div#myAboutLeftCarousel,div#myAboutRightCarousel{
+    margin-top: 10px;
+    }
    
     
 }
@@ -175,6 +243,12 @@ div.navhref{
     div.logocinematographer{
         display:none;
     }
+    div.content > main > div.cd-fixed-bg > div > object > embed {
+        width: 45%;
+        height: 160px;
+        margin-top: 357px;
+    }
+    
     
     
 }
@@ -190,5 +264,12 @@ div.navhref{
         max-width:760px;
         margin-left:auto;
         margin-right:auto;
+    }
+}
+@media (max-width: 1467px) {
+    div.content > main > div.cd-fixed-bg > div > object > embed {
+        width: 45%;
+        height: 600px;
+        margin-top: 357px;
     }
 }
