@@ -2,13 +2,13 @@
     <div class="logocontainer">
         {% block logodenver %}
             <div class="logodenver col-xs-12 col-sm-6 col-md-3 col-lg-3">
-                <span class="redtext">{{'d'|capitalize }}</span>{{ 'enver Harwar'|upper }}<span class="redtext">D</span>            
+                <span class="redtext">{{'d'|capitalize }}</span>{{ 'enver '|upper }}{{ 'James Harwar'|upper }}<span class="redtext">D</span>            
             </div>
             {% endblock %}
     <div class="clear"></div>
         {% block logocinematographer %}
-            <div class="logocinematographer col-xs- col-sm-6 col-md-6 col-lg-6">
-                {{ 'cinematographer'|upper }}
+            <div class="logocinematographer col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                {% spaceless %}{{ 'cinematographer'|upper }}{%endspaceless %}
             </div>
         {% endblock %}
     </div>
