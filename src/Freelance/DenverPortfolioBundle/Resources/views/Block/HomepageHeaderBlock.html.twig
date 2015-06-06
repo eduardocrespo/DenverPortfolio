@@ -23,13 +23,24 @@
     <div class="dropdown ">
         {% block dropdown %}
             <div class="dropdownactivecontainer">
-                <ul class="col-xs-12 hidden-sm hidden-md hidden-lg text-left">
+                <ul class="col-xs-12 hidden-sm hidden-md hidden-lg text-left>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle"><span class="whitetext">{{ 'Main Menu'|upper }}</span> <b class="caret whitetext"></b></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                             <li><a  href="#aboutme"><span class="blacktext">{{ 'about '|upper }}</span><span class="redtext">{{ 'me'|upper }}</span></a></li>
                             <li><a  href="#gallery"><span class="blacktext">{{ 'gallery'|upper }}</span></a></li>
                             <li><a  href="#contact"><span class="blacktext">{{ 'contact'|upper }}</span></a></li>
+                            <li class="dropdown-submenu">
+                                <span class="blacktextdropdown dropdownalign">{{ 'find me on:'|upper }}</span>
+                                <ul class="dropdown-submenu">
+                                    <li class = "dropdown-menu">
+                                    <li><a href="https://instagram.com/denver_harward/" class="text-right"><span class="blacktext">{{ 'Instagram'|upper }}</span></a></li>
+                                    <li><a href="https://www.facebook.com/denver.harward"><span class="blacktext">{{ 'Facebook'|upper }}</span></a></li>
+                                    <li><a href="https://www.linkedin.com/pub/denver-harward/41/823/2a2"><span class="blacktext">{{ 'LinkedIn'|upper }}</span></a></li>
+                                    <li><a href="https://www.youtube.com/user/DenverHarward"><span class="blacktext">{{ 'Youtube'|upper }}</span></a></li>
+                                     <li><a href="http://www.imdb.com/name/nm5490181/"><span class="blacktext">{{ 'IMDB'|upper }}</span></a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                 </ul>
