@@ -7,12 +7,10 @@
     {% block content %}
         {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageDemoReelBlock.html.twig' %}{% endembed %}
         {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageAboutMeBlock.html.twig' %}{% endembed %}
-        {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageImageGallery.html.twig' %}
+        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageGalleryBlock.html.twig' %}
            {% block carouselProgressBar %}
            {% endblock %}
-       {% endembed %}
-       <div class="clear"></div>
-       {% embed 'FreelanceDenverPortfolioBundle:Gallery:HomepageVideoGallery.html.twig' %}{% endembed %}
+       {% endembed %}       
     {% endblock %}
 {% endblock %}
 

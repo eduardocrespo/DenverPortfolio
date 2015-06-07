@@ -50,7 +50,7 @@ main{
 }
 a {
   color: #CC0000;
-  border-bottom-color: red;
+  border-bottom-color: 10px solid red;
   text-decoration: none;
 }
 a:hover {
@@ -161,6 +161,27 @@ div.cd-container{
     height:55px;
     
 }
+
+div.cd-container-redline{
+    background-color: #0f0f0f;
+    background-image: url('/uploads/media/default/0001/01/6453d9212c936f6120ec3803809e0564cdd9d6ac.jpeg');
+    background-position-y: 22px;
+    background-repeat:repeat-x;
+    height:55px;
+
+}
+
+span.blackdiv{
+    background-color: #0f0f0f;
+    width: 100px;
+}
+
+div.cd-container-redline > span{
+    position: relative;
+    top: 18px;
+    font-size: 15.5px;
+}
+
 div.cd-container > p{
     position: relative;
     top: 18px;
@@ -173,6 +194,10 @@ width: 45%;
 height: 360px;
 margin-top: 165px;
 }
+div.content > div > div.cd-fixed-bg > div > object > embed{
+    margin-top:125px;
+}
+
 div#myAboutMainCarousel{
  margin-top: 200px;
  right: 130px;
@@ -207,6 +232,11 @@ div#myAboutRightCarousel{
 .dropdownalign{
     margin-left:20px;
 }
+
+div.content > div.cd-fixed-bg > div > object > embed{
+    margin-top:68px;
+}
+
 @media (max-width: 345px) {
     iframe{
         width: 90px;
@@ -220,6 +250,10 @@ div#myAboutRightCarousel{
         display:none;
     }
     object{
+        width: 90px;
+        height: 90px;
+    }
+    embed{
         width: 90px;
         height: 90px;
     }
@@ -289,7 +323,14 @@ div#myAboutRightCarousel{
         height: 160px;
         margin-top: 357px;
     }
-    
+    #myAboutMainCarousel > a.carousel-control.right{
+        width: 27px;
+        right: 0px;   
+    }
+    #myAboutMainCarousel > a.carousel-control.left{
+        width: 27px;
+        left: 0px;   
+    }
     
     
 }

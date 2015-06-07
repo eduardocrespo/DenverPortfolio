@@ -4,7 +4,24 @@
         <title>{% block title %}{% endblock %} | Portfolio</title>
         {% stylesheets '@FreelanceDenverPortfolioBundle/Resources/public/css/*' filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
-        {% endstylesheets %} 
+        {% endstylesheets %}
+        <link rel="icon" type="image/ico" href="favicon.ico">
+        <meta http-equiv="Content-language" content="en">
+        <meta name="robots" content="index, follow">
+        {# <meta name="viewport" content="initial-scale = .8,maximum-scale = 1.2,width = 1.0,height = 1.0"> #}
+        <meta name="author" content="Denver James Harward, https://www.facebook.com/denver.harward">
+        <meta name="reply-to" content="denverjamesharwar@gmail.com">
+        <meta name="publisher" content="Dave's Custom Web Design">
+        <meta name="copyright" content="Denver James Harward">
+        <meta name="identifier-URL" content="www.denverjamesharward.com.com">
+        <meta name="keywords" content="DenverJamesHarward.com, portfolio, cinematographer utah, Denver James Harward">
+        <meta name="description" content="Denver James Harward portfolio: A portfolio of my video work.">  
+        <meta name="category" content="Web Development, Portfolio"> 
+        <meta name="subject" content="Portfolio">  
+        <meta name="distribution" content="global">
+        <meta name="Generator" content="Symfony, Sonata">
+        <meta name="revisit-after" content="7 days"> 
+
     </head>
     <body>
             {% block header %}{% endblock %}
