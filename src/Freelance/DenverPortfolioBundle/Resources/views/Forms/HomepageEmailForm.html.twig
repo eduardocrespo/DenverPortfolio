@@ -1,0 +1,6 @@
+{% block emailform %}
+    <form novalidate action="{{ path('freelance_denver_portfolio_homepage') }} "method="post" {{ form_enctype(emailForm) }}>
+        {{ form_widget(emailForm) }}
+        <input type="submit" />
+    </form>
+{% endblock %}

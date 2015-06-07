@@ -10,11 +10,13 @@ use Symfony\Component\Form\FormBuilder;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Admin\AdminBundle\Entity\Video;
+use Admin\AdminBundle\Entity\Email;
 use Application\Sonata\MediaBundle\Entity\Media;
+
 
 class MainController extends Controller {
 
-    public function HomeAction() {
+    public function HomeAction(Request $request) {
 
         $homepageAboutMeCenterBiographyContent = $this
             ->getDoctrine()
@@ -56,9 +58,83 @@ class MainController extends Controller {
                 ->mediaById(4)
         ;
         
-        
-        
+        //email form
+        $em = $this->getDoctrine()->getManager();
+        $er = $this->getDoctrine()
+                ->getRepository('AdminAdminBundle:Email');
+        //create new instance of phone
+        $email = new Email();
+        $emailForm = $this->createFormBuilder($email)
+            ->add('name', 'text', array('label' => 'Name*'))
+            ->add('email', 'text', array('label' => 'Email*'))
+            ->add('message', 'text', array('label' => 'Message*'))
+           
+            ->getForm()
+        ;
+        // if email form is posted
+        if($request->isMethod('POST')) {
+            $emailForm->bind($request);
+            $emailData = $emailForm->getData();
+            //if form passes validation.yml constraints then persist data to database;
+            if ($emailForm->isValid()) {
+                $homepageAboutMeCenterBiographyContent = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                    ->allBiographies()
+                ;
+                // 3col slideshow on homepage
+                $homepageVideoCategoryQuery = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                        ->mediaById(5)
+                ;
 
+                // Demo reel on homepage
+                $homepageDemoCategoryQuery = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                        ->mediaById(6)
+                ;
+
+                // about me left slideshow on homepage
+                $homepageAboutMeLeftSlideshowGallery = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                        ->mediaById(7)
+                ;
+
+                // about me right slideshow on homepage
+                $homepageAboutMeRightSlideshowGallery = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                        ->mediaById(8)
+                ;
+
+                //image slideshow on homepage
+                $homepageImageSlideshowCategoryQuery = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                        ->mediaById(4)
+                ;
+                $em = $this
+                    ->getDoctrine()
+                    ->getManager()
+                ;
+                $em->persist($emailData);
+                $em->flush();
+                $session = new Session();
+                $session
+                    ->getFlashBag()
+                    ->add('notice', 'Email Sent')
+                ;
+                
+                return $this->redirect(
+                    $this->generateUrl( "freelance_denver_portfolio_homepage")
+                );
+
+            }
+        }
+        
         return $this->render(
             'FreelanceDenverPortfolioBundle:Main:index.html.twig', array(
                 'homepageAboutMeCenterBiographyContent' => $homepageAboutMeCenterBiographyContent,
@@ -66,9 +142,10 @@ class MainController extends Controller {
                 'homepageDemoGallery' =>  $homepageDemoCategoryQuery,
                 'homepageAboutMeLeftSlideshowGallery' =>  $homepageAboutMeLeftSlideshowGallery,
                 'homepageAboutMeRightSlideshowGallery' =>  $homepageAboutMeRightSlideshowGallery,
-                'homepageImageSlideshowGallery' =>  $homepageImageSlideshowCategoryQuery
+                'homepageImageSlideshowGallery' =>  $homepageImageSlideshowCategoryQuery,
+                'emailForm' => $emailForm->createView()
             )
-        );
+        );   
     }
 
 }

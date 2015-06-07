@@ -1,11 +1,21 @@
 services:
-    sonata.admin.post:
+   videoadmin:
         class: Admin\AdminBundle\Admin\VideoAdmin
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Video" }
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Biography" }
         arguments:
             - ~
             - Admin\AdminBundle\Entity\Video
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminAdminBundle]]
+   emailadmin:
+        class: Admin\AdminBundle\Admin\EmailAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Email" }
+        arguments:
+            - ~
+            - Admin\AdminBundle\Entity\Email
             - ~
         calls:
             - [ setTranslationDomain, [AdminAdminBundle]]

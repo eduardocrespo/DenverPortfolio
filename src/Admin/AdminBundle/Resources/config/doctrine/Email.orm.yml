@@ -1,0 +1,21 @@
+Admin\AdminBundle\Entity\Email:
+    type: entity
+    table: null
+    repositoryClass: Admin\AdminBundle\Entity\EmailRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        message:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
