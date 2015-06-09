@@ -1,3 +1,6 @@
 freelance_denver_portfolio_homepage:
     path:     /
     defaults: { _controller: FreelanceDenverPortfolioBundle:Main:Home }
+freelance_denver_portfolio_send_email:
+    path:     /index/send/email
+    defaults: { _controller: FreelanceDenverPortfolioBundle:Main:SendEmail }

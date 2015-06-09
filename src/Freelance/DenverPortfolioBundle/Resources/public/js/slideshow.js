@@ -1,4 +1,4 @@
-//Fix z-index youtube video embedding
+///Fix z-index youtube video embedding
 $(document).ready(function() {
     function e() {
         r.css({

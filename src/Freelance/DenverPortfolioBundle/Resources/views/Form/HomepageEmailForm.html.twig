@@ -1,0 +1,43 @@
+{% block emailform %}
+    <form novalidate action="{{ path('freelance_denver_portfolio_send_email') }}#contact "method="post" {{ form_enctype(emailForm) }}>
+    {{ form_start(emailForm) }}  
+        {% if form_errors(emailForm.name) or form_errors(emailForm.email) or form_errors(emailForm.message) %}
+            <div class="homepageemailerrors text-center">
+                {{ form_errors(emailForm.name) }}
+                {{ form_errors(emailForm.email) }}
+                {{ form_errors(emailForm.message) }}
+            </div>
+        {% endif %}
+        {% if app.session.flashbag.has('notice') is defined and app.session.flashbag.has('notice') is not null  %}
+            <div class="homepagenoticeflashbags text-center">
+                <ul>
+                    {% for flashMessage in app.session.flashbag.get('notice') %}
+                        <li>{{ flashMessage }}<li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+        {% endif %}
+        <div class="contactcontainer col-sm-12 col-md-12 col-lg-12 span12">
+            <div class="span12 contactcontainerfix">
+                <div class="col-sm-6 col-md-6 col-lg-6 ">
+                    {{ form_widget(emailForm.name) }}
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    {{ form_widget(emailForm.email) }}
+                </div>
+            <div class="clear"></div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    {{ form_widget(emailForm.message) }}
+                </div> 
+            <div class="clear"></div>
+                <div class="col-sm-6 col-md-6 col-lg-6 text-right">
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6 text-right">
+    {{ form_end(emailForm) }}  
+                    <input class="homepageformemail emailsubmit" type="submit" value="{{ 'send'|capitalize }}" />
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

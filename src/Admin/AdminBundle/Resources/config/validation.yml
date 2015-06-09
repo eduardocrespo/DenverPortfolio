@@ -1,0 +1,20 @@
+Admin\AdminBundle\Entity\Email:
+    properties:
+        name:
+            - NotNull:
+                message: Please enter a Name
+            - Regex:
+                pattern: /[Name]/
+                match: true
+                message: 'Please enter a Name'
+        email:
+            - NotNull:
+                message: Please enter a Email
+            - Email:
+                    message: The email entered is not a valid email.
+                    checkMX: true
+                    checkHost: true
+            
+        message:
+            - NotNull:
+                message: Please enter a Message

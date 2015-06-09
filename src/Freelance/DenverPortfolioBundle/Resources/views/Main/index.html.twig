@@ -1,3 +1,16 @@
+{# 
+.htaccess: in var/www/
+IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+    
+    RewriteRule ^app_dev.php - [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+    RewriteRule ^(.*)$ app_dev.php [QSA,L]
+</IfModule>
+#}
 {% extends 'FreelanceDenverPortfolioBundle::base.html.twig' %}
 {% block title %}Home{% endblock %}
 {% block body %}
@@ -11,7 +24,8 @@
            {% block carouselProgressBar %}
            {% endblock %}
         {% endembed %}   
-        {% embed 'FreelanceDenverPortfolioBundle:Form:HomepageEmailForm.html.twig' %}{% endembed %}
+        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageContactMeBlock.html.twig' %}{% endembed %}
+        {% embed 'FreelanceDenverPortfolioBundle:Block:HomepageFooterBlock.html.twig' %}{% endembed %}
     {% endblock %}
 {% endblock %}
 

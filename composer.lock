@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fc2ce0023ce08f63458f0db375b072b5",
+    "hash": "db37bf73db2ef3303c7bcdd6080c2204",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -2294,7 +2294,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/16474a3f6debe6a4a339238470d96b941904853a",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/41328b42f91bf4c72153cdb1fc2c50a5092c7755",
                 "reference": "16474a3f6debe6a4a339238470d96b941904853a",
                 "shasum": ""
             },
@@ -2631,7 +2631,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/270ea2152fb57e5eb47604cf523b5942d097cd39",
+                "url": "https://api.github.com/repos/sonata-project/SonataDatagridBundle/zipball/1c412dd3631dce794f2d4c55968b46c2bd9311d3",
                 "reference": "270ea2152fb57e5eb47604cf523b5942d097cd39",
                 "shasum": ""
             },
@@ -2731,7 +2731,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/e114b10f5c62cbc361633d666fef281b5240ed27",
+                "url": "https://api.github.com/repos/sonata-project/SonataDoctrineORMAdminBundle/zipball/3b72df47ec95781d6936ef27d4019d82ec3b765c",
                 "reference": "e114b10f5c62cbc361633d666fef281b5240ed27",
                 "shasum": ""
             },
@@ -3031,7 +3031,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/3a5fb704d03cf0cabd6b6f2ebb36ea655c0c3c16",
+                "url": "https://api.github.com/repos/sonata-project/SonataMediaBundle/zipball/80873da2d12ee85262d1895c8f75b79ad2b14aef",
                 "reference": "3a5fb704d03cf0cabd6b6f2ebb36ea655c0c3c16",
                 "shasum": ""
             },

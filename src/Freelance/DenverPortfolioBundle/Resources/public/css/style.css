@@ -78,6 +78,21 @@ div.header {
     /* Good browsers */
     opacity: 0.9;
 }
+div.footer {
+    background-color:#0f0f0f;
+    height:55px;
+    width:100%;
+    z-index:1;
+    bottom:0px;
+    
+    
+}
+.footer-fix{
+    position: relative;
+    top: 14px;
+    font-size: 23.4px;
+    letter-spacing: 18px;
+}
 
 body > div.content > main > div > div.social.text-right > a > img{
     margin-right:6px; 
@@ -91,7 +106,7 @@ div.content > main > div > div.social{
     top: 20%;
     position: fixed;
     z-index: 3;
-    right:0px;
+    right: 0px;
     margin-top: 6px;
     background-color: #0f0f0f;
 }
@@ -138,12 +153,13 @@ height: 100%;
 }
  
 .cd-fixed-bg {
-min-height: 100%;
-background-size: cover;
-background-attachment: fixed;
-background-repeat: no-repeat;
-background-position: center center;
+    min-height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
+
  
 .cd-fixed-bg.cd-bg-1 {
   background-image: url("/uploads/media/default/0001/01/thumb_63_default_4k.jpeg");
@@ -164,7 +180,7 @@ div.cd-container{
 
 div.cd-container-redline{
     background-color: #0f0f0f;
-    background-image: url('/uploads/media/default/0001/01/6453d9212c936f6120ec3803809e0564cdd9d6ac.jpeg');
+    background-image: url('/uploads/media/default/0001/01/0c4936942d34d25a12944695726a06e4723d1627.png');
     background-position-y: 22px;
     background-repeat:repeat-x;
     height:55px;
@@ -195,7 +211,8 @@ height: 360px;
 margin-top: 165px;
 }
 div.content > div > div.cd-fixed-bg > div > object > embed{
-    margin-top:125px;
+    //margin-top:125px;
+    margin-top:131px;
 }
 
 div#myAboutMainCarousel{
@@ -237,6 +254,57 @@ div.content > div.cd-fixed-bg > div > object > embed{
     margin-top:68px;
 }
 
+.homepageformemail{
+    background-color: black;
+}
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+textarea, input{
+    bordercolor: white;
+    border-bottom-style:solid;
+    border-width:1px;
+    margin-top:4px;
+    color:#fff;
+    font-family: FuturaLT-Book;
+    font-size: 17px;
+    padding-left: 7px;
+    
+}
+
+.homepageemailerrors > ul > li, .homepagenoticeflashbags > ul > li{
+    list-style-type: none;
+    color:#fff;
+    font-family: FuturaLT-Book;
+    font-size: 25px;
+}
+
+.emailformname, .emailformemail{
+    text-align: left;
+}
+.emailformmessage{
+    text-align: center;
+}
+.emailsubmit{
+    width:95%
+}
+
+div.contactcontainer{
+    width:100%;
+}
+.contactcontainerfix{
+    margin-right:25%;
+    margin-left:25%;
+}
+div.contactcontainer, div.homepageemailerrors{
+    margin-top:200px;
+}
+
+.carousel-inner{
+  width:100%;
+  max-height: 260px !important;
+}
 @media (max-width: 345px) {
     iframe{
         width: 90px;
@@ -332,6 +400,23 @@ div.content > div.cd-fixed-bg > div > object > embed{
         left: 0px;   
     }
     
+    .emailformname, .emailformemail{
+        text-align: center;
+    }
+    
+    .emailsubmit {
+        width: 100%;
+    }
+    
+    .footer-fix{
+    position: relative;
+    top: 14px;
+    font-size: 23.4px;
+    letter-spacing: 0px;
+}
+    
+    
+    
     
 }
 
@@ -359,3 +444,4 @@ div.content > div.cd-fixed-bg > div > object > embed{
         height: 600px;
         margin-top: 357px;
     }
+
