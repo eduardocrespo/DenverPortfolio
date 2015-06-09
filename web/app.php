@@ -1,12 +1,4 @@
 <?php
-if (isset($_SERVER['HTTP_CLIENT_IP'])
-    || isset($_SERVER['HTTP_X_FORWARDED_FOR'])
-    || !(in_array(@$_SERVER['REMOTE_ADDR'], array('204.228.139.43', 'fe80::1', '::1'))
-    || php_sapi_name() === 'cli-server')
-) {
-    header('HTTP/1.0 403 Forbidden');
-    exit('You are not allowed to access this file. Check '.'kernel'.' for more information.');
-}
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -24,7 +16,9 @@ $apcLoader->register(true);
 
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';
-
+ini_set('error_reporting', E_ALL | E_STRICT); 
+ini_set('display_errors', 'Off'); 
+ini_set('log_errors', 'Off'); 
 $kernel = new AppKernel('prod', false);
 $kernel->loadClassCache();
 //$kernel = new AppCache($kernel);

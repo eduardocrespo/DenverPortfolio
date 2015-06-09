@@ -303,7 +303,11 @@ div.contactcontainer, div.homepageemailerrors{
 
 .carousel-inner{
   width:100%;
-  max-height: 260px !important;
+}
+#myAboutRightCarousel > .carousel-inner,
+#myAboutLeftCarousel > .carousel-inner
+{
+    max-height: 265px !important;
 }
 @media (max-width: 345px) {
     iframe{
