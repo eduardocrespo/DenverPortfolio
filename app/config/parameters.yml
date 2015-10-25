@@ -4,14 +4,14 @@ parameters:
     database_host: 127.0.0.1
     database_port: null
     database_name: symfony
-    database_user: root
+    database_user: user
     database_password: password
     locale: en
     mailer_transport: gmail
     mailer_encryption: ssl
     mailer_auth_mode: login
     mailer_host: smtp.gmail.com
-    mailer_user: username
-    mailer_password: password
-    secret: A2k!%20
+    mailer_user: denverjamesharwardmailer@gmail.com
+    mailer_password: password	
+    secret: password
     

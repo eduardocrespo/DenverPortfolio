@@ -223,7 +223,7 @@ class MainController extends Controller {
                 
                 $message = \Swift_Message::newInstance()
                     ->setSubject('You have a new email from DenverJamesHarward.com')
-                    ->setFrom('denver@denverharward.com')
+                    ->setFrom('denverjamesharwardmailer@gmail.com')
                     ->setTo('denverharward@gmail.com')
                     ->setBody(
                             $this->renderView(

@@ -1,4 +1,6 @@
 <?php
+echo "Site is down for a moment check back later";
+exit();
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
