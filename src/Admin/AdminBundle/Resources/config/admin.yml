@@ -1,4 +1,24 @@
 services:
+   addresspamadmin:
+        class: Admin\AdminBundle\Admin\AddressSpamAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Email Address Blacklist Filter" }
+        arguments:
+            - ~
+            - Admin\AdminBundle\Entity\AddressSpam
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminAdminBundle]]
+   messagespamadmin:
+        class: Admin\AdminBundle\Admin\MessageSpamAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Message Blacklist Filter" }
+        arguments:
+            - ~
+            - Admin\AdminBundle\Entity\MessageSpam
+            - ~
+        calls:
+            - [ setTranslationDomain, [AdminAdminBundle]]
    videoadmin:
         class: Admin\AdminBundle\Admin\VideoAdmin
         tags:
@@ -19,3 +39,5 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AdminAdminBundle]]
+    
+  

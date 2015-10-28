@@ -1,6 +1,4 @@
 <?php
-echo "Site is down for a moment check back later";
-exit();
 use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,6 +13,8 @@ $apcLoader = new ApcClassLoader(sha1(__FILE__), $loader);
 $loader->unregister();
 $apcLoader->register(true);
 */
+    header('HTTP/1.0 403 Forbidden');
+    exit('Website is down for maintenance. Please try again later.');
 
 require_once __DIR__.'/../app/AppKernel.php';
 //require_once __DIR__.'/../app/AppCache.php';

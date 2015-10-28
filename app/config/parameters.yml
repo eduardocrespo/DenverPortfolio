@@ -12,6 +12,6 @@ parameters:
     mailer_auth_mode: login
     mailer_host: smtp.gmail.com
     mailer_user: denverjamesharwardmailer@gmail.com
-    mailer_password: password	
+    mailer_password: password
     secret: password
     
