@@ -1,0 +1,15 @@
+Admin\AdminBundle\Entity\MessageSpam:
+    type: entity
+    table: null
+    repositoryClass: Admin\AdminBundle\Entity\MessageSpamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        filter:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

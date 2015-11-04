@@ -108,4 +108,33 @@ class Email
     {
         return $this->message;
     }
+    
+    
+    public function messageSpam($message, $type, $filters, $index){
+        // uses inverse logic does contain to compare against, 'does not' contain type can be added later.
+        if($type == 'does contain'){
+            // spam count is initally zero, if message contains a blacklist keyword we will increase this by one.
+            $spamCount = 0;
+            // go through each blacklist keyword and check to see if it exists in message.
+            foreach($filters as $filter){
+                if (strpos($message, $filter->$index()) !== false) {
+                    //filter exists in message increase counter by 1
+                    $spamCount += 1;
+                }else{
+                    // filter does not exist in message, increase by nothing
+                     $spamCount += 0;
+                }         
+            }
+            if($spamCount == 0){
+                // message does not contain spam in $spamCount, so return false
+                return false;
+            }else{
+                // message does contain spam in $spamCount, so return true
+                return true;
+                
+            }
+        }
+     
+    }
+    
 }

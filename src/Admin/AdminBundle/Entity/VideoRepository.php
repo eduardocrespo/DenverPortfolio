@@ -6,11 +6,44 @@ use Doctrine\ORM\EntityRepository;
 
 class VideoRepository extends EntityRepository
 {
+    //get biographies for slideshow
     public function allBiographies()
     {
         $query = $this
             ->getEntityManager()
             ->getRepository('AdminAdminBundle:Video')
+            ->createQueryBuilder('t')
+            ->select('t')
+        ;
+        $token = $query
+            ->getQuery()
+            ->getResult()
+        ;
+        return $token;
+    }
+    // get all message blacklist keywords
+    public function allMessageFilters()
+    {
+        $query = $this
+            ->getEntityManager()
+            ->getRepository('AdminAdminBundle:MessageSpam')
+            ->createQueryBuilder('t')
+            ->select('t')
+        ;
+        $token = $query
+            ->getQuery()
+            ->getResult()
+        ;
+        return $token;
+    }
+    
+    //all email address blacklist keyword
+    
+    public function allAddressFilters()
+    {
+        $query = $this
+            ->getEntityManager()
+            ->getRepository('AdminAdminBundle:AddressSpam')
             ->createQueryBuilder('t')
             ->select('t')
         ;

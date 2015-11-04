@@ -1,0 +1,15 @@
+Admin\AdminBundle\Entity\AddressSpam:
+    type: entity
+    table: null
+    repositoryClass: Admin\AdminBundle\Entity\AddressSpamRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        filter:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

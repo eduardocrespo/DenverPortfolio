@@ -120,11 +120,24 @@ class MainController extends Controller {
     }
     
     public function SendEmailAction(Request $request){
+        // array of message blacklist keyword under getFilter index
+        $homepageMessageSpamFilters = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                    ->allMessageFilters()
+        ;
+        // array of message blacklist keyword under getFilter index
+        $homepageAddressSpamFilters = $this
+                    ->getDoctrine()
+                    ->getRepository('AdminAdminBundle:Video')
+                    ->allAddressFilters()
+        ;
+        // biography slideshow for bootstrap
         $homepageAboutMeCenterBiographyContent = $this
                     ->getDoctrine()
                     ->getRepository('AdminAdminBundle:Video')
                     ->allBiographies()
-                ;
+        ;
                 // 3col slideshow on homepage
                 $homepageVideoCategoryQuery = $this
                     ->getDoctrine()
@@ -213,9 +226,15 @@ class MainController extends Controller {
                     ->getDoctrine()
                     ->getManager()
                 ;
-                $em->persist($emailData);
+                // if message and email does not contain a blacklist keyword in message or email, persist email data to database.
+                if ( $email->messageSpam($emailData->getMessage(), 'does contain', $homepageMessageSpamFilters, 'getFilter' ) === false &&
+                     $email->messageSpam($emailData->getEmail(), 'does contain', $homepageAddressSpamFilters, 'getFilter' ) === false ){
+                     $em->persist($emailData);
+                }       
+                
                 $em->flush();
                 $session = new Session();
+                
                 $session
                     ->getFlashBag()
                     ->add('notice', 'Email Sent')
@@ -248,8 +267,12 @@ class MainController extends Controller {
                         'text/plain'
                     )
                 ;
-                
-                $this->get('mailer')->send($message);
+                // if message and email data does not contain blacklist keyword in message or email, send message.
+                if ( $email->messageSpam($emailData->getMessage(), 'does contain', $homepageMessageSpamFilters, 'getFilter' ) === false &&
+                     $email->messageSpam($emailData->getEmail(), 'does contain', $homepageAddressSpamFilters, 'getFilter' ) === false ){
+                    //$this->get('mailer')->send($message);
+                }
+
                 
                 return $this->redirect(
                     $this->generateUrl("freelance_denver_portfolio_homepage"
